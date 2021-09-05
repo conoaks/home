@@ -8,5 +8,4 @@ int main()
     cout<<"Program Description: This Program is designed to be a template for all future programs in the class\n";
     cout<<"Designed by: Red Hills Industries\n";
     cout<< "********************\n";
-    return 0; 
 }
