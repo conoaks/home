@@ -3,7 +3,7 @@
 using namespace std;
 
 void welcomemessage();
-void series();
+double series();
 int main()
 {
     //Welcome Message
@@ -19,9 +19,25 @@ void welcomemessage()
     cout<<"Designed by: Red Hills Industries\n";
     cout<< "********************\n";
 }
-void series(int number, int count)
+double series(int number, int count)
 {
-   cout<<"test";
+    cout<<"Please enter 10 positive numbers that are not 0, once you have reached 10 numbers, enter the number 0 to end.\n";
+    number=1;
+    while (number>=1)
+    {
+        cin>>number;
+        if(number>0)
+        {
+            cout<< "Number is invalid please enter a positive non zero number\n";
+            cin>>number;
+        }
+        if(number==0)
+            {
+                return count;
+            }
+        count++;
+    }
+    return count;
 }
     
 
