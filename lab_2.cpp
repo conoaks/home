@@ -3,13 +3,13 @@
 using namespace std;
 
 void welcomemessage();
-int seriesPositive();
+void series();
 int main()
 {
     //Welcome Message
     welcomemessage();
     //Starting Normal execution
-    seriesPositive();
+    series();
 }
 void welcomemessage()
 {
@@ -19,24 +19,10 @@ void welcomemessage()
     cout<<"Designed by: Red Hills Industries\n";
     cout<< "********************\n";
 }
-int seriesPositive(int number, int count)
+void series(int number, int count)
 {
-    cout<<"Please enter 10 positive numbers that are not 0, once you have reached 10 numbers, enter the number 0 to end.\n";
-    number=1;
-    while (number>=1)
-    {
-        cin>>number;
-        if(number>0)
-        {
-            cout<< "Number is invalid please enter a positive non zero number\n";
-            cin>>number;
-        }
-        if(number==0)
-            {
-                return count;
-            }
-        count++;
-    }
+   cout<<"test";
 }
     
+
     
