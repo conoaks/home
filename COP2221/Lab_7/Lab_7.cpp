@@ -61,7 +61,7 @@ void welcomemessage()
 {
     cout<< "********************\n";
     cout<<"Welcome to the Lab_7 Program\n";
-    cout<<"Program Description: This Program is designed to be a template for all future programs in the class\n";
+    cout<<"Program Description: This Program is designed to allow me to practice using classes\n";
     cout<<"Designed by: Red Hills Industries\n";
     cout<< "********************\n";
 }
