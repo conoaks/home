@@ -1,0 +1,292 @@
+Conner Oaks
+Chapter 2
+
+SQL> SELECT table_name 
+    2 FROM user_tables;
+
+TABLE_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+CUSTOMERS
+ORDERS
+PUBLISHER
+AUTHOR
+BOOKS
+ORDERITEMS
+BOOKAUTHOR
+PROMOTION
+
+8 rows selected.
+
+SQL> desc books
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ ISBN                                                                          NOT NULL VARCHAR2(10)
+ TITLE                                                                                  VARCHAR2(30)
+ PUBDATE                                                                                DATE
+ PUBID                                                                                  NUMBER(2)
+ COST                                                                                   NUMBER(5,2)
+ RETAIL                                                                                 NUMBER(5,2)
+ DISCOUNT                                                                               NUMBER(4,2)
+ CATEGORY                                                                               VARCHAR2(12)
+
+SQL> SELECT *
+    2 FROM books;
+
+ISBN       TITLE                          PUBDATE        PUBID       COST     RETAIL   DISCOUNT CATEGORY
+---------- ------------------------------ --------- ---------- ---------- ---------- ---------- ------------
+1059831198 BODYBUILD IN 10 MINUTES A DAY  21-JAN-05          4      18.75      30.95            FITNESS
+0401140733 REVENGE OF MICKEY              14-DEC-05          1       14.2         22            FAMILY LIFE
+4981341710 BUILDING A CAR WITH TOOTHPICKS 18-MAR-06          2       37.8      59.95          3 CHILDREN
+8843172113 DATABASE IMPLEMENTATION        04-JUN-03          3       31.4      55.95            COMPUTER
+3437212490 COOKING WITH MUSHROOMS         28-FEB-04          4       12.5      19.95            COOKING
+3957136468 HOLY GRAIL OF ORACLE           31-DEC-05          3      47.25      75.95        3.8 COMPUTER
+1915762492 HANDCRANKED COMPUTERS          21-JAN-05          3       21.8         25            COMPUTER
+9959789321 E-BUSINESS THE EASY WAY        01-MAR-06          2       37.9       54.5            COMPUTER
+2491748320 PAINLESS CHILD-REARING         17-JUL-04          5         48      89.95        4.5 FAMILY LIFE
+0299282519 THE WOK WAY TO COOK            11-SEP-04          4         19      28.75            COOKING
+8117949391 BIG BEAR AND LITTLE DOVE       08-NOV-05          5       5.32       8.95            CHILDREN
+0132149871 HOW TO GET FASTER PIZZA        11-NOV-06          4      17.85      29.95        1.5 SELF HELP
+9247381001 HOW TO MANAGE THE MANAGER      09-MAY-03          1       15.4      31.95            BUSINESS
+2147428890 SHORTEST POEMS                 01-MAY-05          5      21.85      39.95            LITERATURE
+
+14 rows selected.
+
+
+SQL> SELECT *
+    2 FROM customers;
+
+ CUSTOMER# LASTNAME   FIRSTNAME  ADDRESS              CITY         ST ZIP     REFERRED RE
+---------- ---------- ---------- -------------------- ------------ -- ----- ---------- --
+      1001 MORALES    BONITA     P.O. BOX 651         EASTPOINT    FL 32328            SE
+      1002 THOMPSON   RYAN       P.O. BOX 9835        SANTA MONICA CA 90404            W
+      1003 SMITH      LEILA      P.O. BOX 66          TALLAHASSEE  FL 32306            SE
+      1004 PIERSON    THOMAS     69821 SOUTH AVENUE   BOISE        ID 83707            NW
+      1005 GIRARD     CINDY      P.O. BOX 851         SEATTLE      WA 98115            NW
+      1006 CRUZ       MESHIA     82 DIRT ROAD         ALBANY       NY 12211            NE
+      1007 GIANA      TAMMY      9153 MAIN STREET     AUSTIN       TX 78710       1003 SW
+      1008 JONES      KENNETH    P.O. BOX 137         CHEYENNE     WY 82003            N
+      1009 PEREZ      JORGE      P.O. BOX 8564        BURBANK      CA 91510       1003 W
+      1010 LUCAS      JAKE       114 EAST SAVANNAH    ATLANTA      GA 30314            SE
+      1011 MCGOVERN   REESE      P.O. BOX 18          CHICAGO      IL 60606            N
+      1012 MCKENZIE   WILLIAM    P.O. BOX 971         BOSTON       MA 02110            NE
+      1013 NGUYEN     NICHOLAS   357 WHITE EAGLE AVE. CLERMONT     FL 34711       1006 SE
+      1014 LEE        JASMINE    P.O. BOX 2947        CODY         WY 82414            N
+      1015 SCHELL     STEVE      P.O. BOX 677         MIAMI        FL 33111            SE
+      1016 DAUM       MICHELL    9851231 LONG ROAD    BURBANK      CA 91508       1010 W
+      1017 NELSON     BECCA      P.O. BOX 563         KALMAZOO     MI 49006            N
+      1018 MONTIASA   GREG       1008 GRAND AVENUE    MACON        GA 31206            SE
+      1019 SMITH      JENNIFER   P.O. BOX 1151        MORRISTOWN   NJ 07962       1003 NE
+      1020 FALAH      KENNETH    P.O. BOX 335         TRENTON      NJ 08607            NE
+
+20 rows selected.
+
+SQL> desc customers;
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ CUSTOMER#                                                                     NOT NULL NUMBER(4)
+ LASTNAME                                                                      NOT NULL VARCHAR2(10)
+ FIRSTNAME                                                                     NOT NULL VARCHAR2(10)
+ ADDRESS                                                                                VARCHAR2(20)
+ CITY                                                                                   VARCHAR2(12)
+ STATE                                                                                  VARCHAR2(2)
+ ZIP                                                                                    VARCHAR2(5)
+ REFERRED                                                                               NUMBER(4)
+ REGION                                                                                 CHAR(2)
+
+SQL> SELECT title
+  2  FROM books;
+
+TITLE
+------------------------------
+BODYBUILD IN 10 MINUTES A DAY
+REVENGE OF MICKEY
+BUILDING A CAR WITH TOOTHPICKS
+DATABASE IMPLEMENTATION
+COOKING WITH MUSHROOMS
+HOLY GRAIL OF ORACLE
+HANDCRANKED COMPUTERS
+E-BUSINESS THE EASY WAY
+PAINLESS CHILD-REARING
+THE WOK WAY TO COOK
+BIG BEAR AND LITTLE DOVE
+HOW TO GET FASTER PIZZA
+HOW TO MANAGE THE MANAGER
+SHORTEST POEMS
+
+14 rows selected.
+
+SQL> SELECT title, pubdate
+  2  FROM books;
+
+TITLE                          PUBDATE
+------------------------------ ---------
+BODYBUILD IN 10 MINUTES A DAY  21-JAN-05
+REVENGE OF MICKEY              14-DEC-05
+BUILDING A CAR WITH TOOTHPICKS 18-MAR-06
+DATABASE IMPLEMENTATION        04-JUN-03
+COOKING WITH MUSHROOMS         28-FEB-04
+HOLY GRAIL OF ORACLE           31-DEC-05
+HANDCRANKED COMPUTERS          21-JAN-05
+E-BUSINESS THE EASY WAY        01-MAR-06
+PAINLESS CHILD-REARING         17-JUL-04
+THE WOK WAY TO COOK            11-SEP-04
+BIG BEAR AND LITTLE DOVE       08-NOV-05
+HOW TO GET FASTER PIZZA        11-NOV-06
+HOW TO MANAGE THE MANAGER      09-MAY-03
+SHORTEST POEMS                 01-MAY-05
+
+14 rows selected.
+
+SQL> SELECT title as "Title of Book", category
+  2  FROM books;
+
+Title of Book                  CATEGORY
+------------------------------ ------------
+BODYBUILD IN 10 MINUTES A DAY  FITNESS
+REVENGE OF MICKEY              FAMILY LIFE
+BUILDING A CAR WITH TOOTHPICKS CHILDREN
+DATABASE IMPLEMENTATION        COMPUTER
+COOKING WITH MUSHROOMS         COOKING
+HOLY GRAIL OF ORACLE           COMPUTER
+HANDCRANKED COMPUTERS          COMPUTER
+E-BUSINESS THE EASY WAY        COMPUTER
+PAINLESS CHILD-REARING         FAMILY LIFE
+THE WOK WAY TO COOK            COOKING
+BIG BEAR AND LITTLE DOVE       CHILDREN
+HOW TO GET FASTER PIZZA        SELF HELP
+HOW TO MANAGE THE MANAGER      BUSINESS
+SHORTEST POEMS                 LITERATURE
+
+14 rows selected.
+
+SQL> select title, retail price
+  2  from books;
+
+TITLE                               PRICE
+------------------------------ ----------
+BODYBUILD IN 10 MINUTES A DAY       30.95
+REVENGE OF MICKEY                      22
+BUILDING A CAR WITH TOOTHPICKS      59.95
+DATABASE IMPLEMENTATION             55.95
+COOKING WITH MUSHROOMS              19.95
+HOLY GRAIL OF ORACLE                75.95
+HANDCRANKED COMPUTERS                  25
+E-BUSINESS THE EASY WAY              54.5
+PAINLESS CHILD-REARING              89.95
+THE WOK WAY TO COOK                 28.75
+BIG BEAR AND LITTLE DOVE             8.95
+HOW TO GET FASTER PIZZA             29.95
+HOW TO MANAGE THE MANAGER           31.95
+SHORTEST POEMS                      39.95
+
+14 rows selected.
+
+SQL> select title, retail-cost profit
+  2  from books;
+
+TITLE                              PROFIT
+------------------------------ ----------
+BODYBUILD IN 10 MINUTES A DAY        12.2
+REVENGE OF MICKEY                     7.8
+BUILDING A CAR WITH TOOTHPICKS      22.15
+DATABASE IMPLEMENTATION             24.55
+COOKING WITH MUSHROOMS               7.45
+HOLY GRAIL OF ORACLE                 28.7
+HANDCRANKED COMPUTERS                 3.2
+E-BUSINESS THE EASY WAY              16.6
+PAINLESS CHILD-REARING              41.95
+THE WOK WAY TO COOK                  9.75
+BIG BEAR AND LITTLE DOVE             3.63
+HOW TO GET FASTER PIZZA              12.1
+HOW TO MANAGE THE MANAGER           16.55
+SHORTEST POEMS                       18.1
+
+14 rows selected.
+
+SQL> select distinct category
+  2  from books;
+
+CATEGORY
+------------
+FITNESS
+FAMILY LIFE
+CHILDREN
+COMPUTER
+COOKING
+SELF HELP
+BUSINESS
+LITERATURE
+
+8 rows selected.
+
+SQL> select unique category
+  2  from books;
+
+CATEGORY
+------------
+FITNESS
+FAMILY LIFE
+CHILDREN
+COMPUTER
+COOKING
+SELF HELP
+BUSINESS
+LITERATURE
+
+8 rows selected.
+
+SQL> select firstname||' '||lastname "Customer Name"
+  2  from customers;
+
+Customer Name
+---------------------
+BONITA MORALES
+RYAN THOMPSON
+LEILA SMITH
+THOMAS PIERSON
+CINDY GIRARD
+MESHIA CRUZ
+TAMMY GIANA
+KENNETH JONES
+JORGE PEREZ
+JAKE LUCAS
+REESE MCGOVERN
+WILLIAM MCKENZIE
+NICHOLAS NGUYEN
+JASMINE LEE
+STEVE SCHELL
+MICHELL DAUM
+BECCA NELSON
+GREG MONTIASA
+JENNIFER SMITH
+KENNETH FALAH
+
+20 rows selected.
+
+SQL> select customer#||':'|| lastname||', '||firstname as "Customer"
+  2  from customers;
+
+Customer
+---------------------------------------------------------------
+1001:MORALES, BONITA
+1002:THOMPSON, RYAN
+1003:SMITH, LEILA
+1004:PIERSON, THOMAS
+1005:GIRARD, CINDY
+1006:CRUZ, MESHIA
+1007:GIANA, TAMMY
+1008:JONES, KENNETH
+1009:PEREZ, JORGE
+1010:LUCAS, JAKE
+1011:MCGOVERN, REESE
+1012:MCKENZIE, WILLIAM
+1013:NGUYEN, NICHOLAS
+1014:LEE, JASMINE
+1015:SCHELL, STEVE
+1016:DAUM, MICHELL
+1017:NELSON, BECCA
+1018:MONTIASA, GREG
+1019:SMITH, JENNIFER
+1020:FALAH, KENNETH
+
+20 rows selected.
