@@ -1,0 +1,203 @@
+Conner Oaks
+hands on module 4
+
+1. Modify the following SQL command so that the Rep_ID column is 
+the PRIMARY KEY for the table and the default value of Y is 
+assigned to the Comm column. (The Comm column indicates 
+whether the sales representative earns commission.)
+CREATE TABLE store_reps 
+(rep_ID NUMBER(5),
+ last VARCHAR2(15),
+ first VARCHAR2(10),
+ comm CHAR(1));
+
+ SQL> ed
+Wrote file afiedt.buf
+
+  1  CREATE TABLE store_reps
+  2  (rep_ID NUMBER(5),
+  3   last VARCHAR2(15),
+  4   first VARCHAR2(10),
+  5   comm CHAR(1) default 'Y',
+  6* constraint store_reps_repid_pk Primary key (rep_id))
+SQL> /
+
+Table created.
+
+2. Change the STORE_REPS table so that NULL values can’t be 
+entered in the name columns (First and Last).
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  alter table store_reps
+  2* modify (first constraint store_reps_first_nn NOT NULL)
+SQL> /
+
+Table altered.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  alter table store_reps
+  2* modify (last constraint store_reps_flast_nn NOT NULL)
+SQL> /
+
+Table altered.
+
+3. Change the STORE_REPS table so that only a Y or N can be 
+entered in the Comm column.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  alter table store_reps
+  2* add constraint store_reps_comm_ck CHECK (comm in('Y', 'N'))
+SQL> /
+
+Table altered.
+
+4. Add a column named Base_salary with a datatype of NUMBER(7,2) 
+to the STORE_REPS table. Ensure that the amount entered is 
+above zero.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  alter table store_reps
+  2* add base_salary number(7,2)
+SQL> /
+
+Table altered.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  alter table store_reps
+  2* add constraint store_reps_base_salary_ck CHECK (base_salary>0)
+SQL> /
+
+Table altered.
+
+5. Create a table named BOOK_STORES to include the columns listed in the following chart.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  create table Book_Stores
+  2  (store_id number(8),
+  3  name varchar2(30) NOT NULL,
+  4  contact varchar2(30),
+  5  rep_id varchar2(5),
+  6  constraint book_stores_store_id_pk PRIMARY KEY (store_id),
+  7* constraint book_stores_name_uk UNIQUE (name))
+SQL>
+SQL> /
+
+Table created.
+
+6, Add a constraint to make sure the Rep_ID value entered in the BOOK_STORES table is a
+valid value contained in the STORE_REPS table. The Rep_ID columns of both tables were
+initially created as different datatypes. Does this cause an error when adding the
+constraint? Make table modifications as needed so that you can add the required
+constraint
+
+SQL> alter table book_stores
+  2  drop column rep_id;
+
+Table altered.
+
+SQL> alter table book_stores
+  2  add rep_id NUMBER(5);
+
+Table altered.
+
+
+Table altered.
+
+7. Change the constraint created in Assignment #6 so that associated rows of the
+BOOK_STORES table are deleted automatically if a row in the STORE_REPS table is
+deleted
+
+SQL> ALTER TABLE book_stores
+2 DROP CONSTRAINT book_stores_rep_id_fk
+3 ADD CONSTRAINT book_stores_rep_id_fk FOREIGN KEY (rep_id)
+4 REFERENCES store_reps (rep_id) ON DELETE CASCADE;
+
+
+8. Create a table named REP_CONTRACTS containing the columns listed in the following
+chart. A composite PRIMARY KEY constraint including the Rep_ID, Store_ID, and Quarter
+columns should be assigned. In addition, FOREIGN KEY constraints should be assigned to
+both the Rep_ID and Store_ID columns
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  create table rep_contacts
+  2  (
+  3  store_id number(8),
+  4  name number(5),
+  5  quarter char(3),
+  6  rep_id number(5),
+  7  constraint rep_cont_store_rep_quart_pk Primary Key (store_id, quarter, rep_id),
+  8  constraint rep_cont_store_id_fk FOREIGN KEY (store_id)
+  9     references book_stores(store_id),
+ 10  constraint rep_cont_rep_id_fk FOREIGN KEY (rep_id)
+ 11     references store_reps(rep_id)
+ 12* )
+SQL> /
+
+Table created.
+
+9. Produce a list of information about all existing constraints on the STORE_REPS table.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select constraint_name, constraint_type, search_condition, r_constraint_name
+  2  from user_constraints
+  3* where table_name='STORE_REPS'
+SQL> /
+
+CONSTRAINT_NAME                                                                                                                  C
+-------------------------------------------------------------------------------------------------------------------------------- -
+SEARCH_CONDITION
+--------------------------------------------------------------------------------
+R_CONSTRAINT_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+STORE_REPS_FIRST_NN                                                                                                              C
+"FIRST" IS NOT NULL
+
+
+STORE_REPS_FLAST_NN                                                                                                              C
+"LAST" IS NOT NULL
+
+
+STORE_REPS_COMM_CK                                                                                                               C
+comm in('Y', 'N')
+
+
+STORE_REPS_BASE_SALARY_CK                                                                                                        C
+base_salary>0
+
+
+STORE_REPS_REPID_PK                                                                                                              P
+
+
+
+10. Issue the commands to disable and then enable the CHECK constraint on the Base_salary
+column.
+
+SQL> alter table store_reps
+  2  disable constraint store_reps_base_salary_ck;
+
+Table altered.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  alter table store_reps
+  2* enable constraint store_reps_base_salary_ck
+SQL> /
+
+Table altered.

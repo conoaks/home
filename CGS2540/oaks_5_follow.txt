@@ -1,0 +1,442 @@
+Conner Oaks
+module 5 follow along
+
+SQL> desc acctmanager
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ AMID                                                                          NOT NULL CHAR(4)
+ AMFIRST                                                                       NOT NULL VARCHAR2(12)
+ AMLAST                                                                        NOT NULL VARCHAR2(12)
+ AMEDATE                                                                                DATE
+ AMSAL                                                                                  NUMBER(8,2)
+ AMCOMM                                                                                 NUMBER(7,2)
+ REGION                                                                                 CHAR(2)
+
+SQL> insert into acctmanager
+  2  values ('T500', 'NICK', 'Taylor', '05-SEP-09', 42000, 3500, 'NE');
+
+1 row created.
+
+SQL> select *
+  2  from acctmanager;
+
+AMID AMFIRST      AMLAST       AMEDATE        AMSAL     AMCOMM RE
+---- ------------ ------------ --------- ---------- ---------- --
+T500 NICK         Taylor       05-SEP-09      42000       3500 NE
+
+SQL> insert into acctmanager (amid, amfirst, amlast, amedate, amsal, amcomm)
+  2  values ('L500', 'MANDY', 'LOPEZ', '01-OCT-09', 4700, 1500);
+
+1 row created.
+
+SQL> select *
+  2  from acctmanager;
+
+AMID AMFIRST      AMLAST       AMEDATE        AMSAL     AMCOMM RE
+---- ------------ ------------ --------- ---------- ---------- --
+T500 NICK         Taylor       05-SEP-09      42000       3500 NE
+L500 MANDY        LOPEZ        01-OCT-09       4700       1500
+
+SQL> insert into acctmanager (amid, amfirst, amlast, amedate, amsal, amcomm, region)
+  2  values ('J500', 'SAMMIE', 'SAMMIE', SYSDATE, 39500, 2000, 'NW');
+
+1 row created.
+
+SQL> select *
+  2  from acctmanager;
+
+AMID AMFIRST      AMLAST       AMEDATE        AMSAL     AMCOMM RE
+---- ------------ ------------ --------- ---------- ---------- --
+T500 NICK         Taylor       05-SEP-09      42000       3500 NE
+L500 MANDY        LOPEZ        01-OCT-09       4700       1500
+J500 SAMMIE       SAMMIE       21-FEB-22      39500       2000 NW
+
+SQL> insert into acctmanager (amid, amfirst, amlast, amedate, amsal, amcomm, region)
+  2  values ('C010', 'CONNER', 'OAKS', null, null, 2000, 'SE');
+
+1 row created.
+
+SQL> select *
+  2  from acctmanager;
+
+AMID AMFIRST      AMLAST       AMEDATE        AMSAL     AMCOMM RE
+---- ------------ ------------ --------- ---------- ---------- --
+T500 NICK         Taylor       05-SEP-09      42000       3500 NE
+L500 MANDY        LOPEZ        01-OCT-09       4700       1500
+J500 SAMMIE       SAMMIE       21-FEB-22      39500       2000 NW
+C010 CONNER       OAKS                            0       2000 SE
+
+SQL> alter table acctmanager
+  2  add (amearn AS (amsal+amcomm));
+
+Table altered.
+
+SQL> select *
+  2  from acctmanager;
+
+AMID AMFIRST      AMLAST       AMEDATE        AMSAL     AMCOMM RE     AMEARN
+---- ------------ ------------ --------- ---------- ---------- -- ----------
+T500 NICK         Taylor       05-SEP-09      42000       3500 NE      45500
+L500 MANDY        LOPEZ        01-OCT-09       4700       1500          6200
+J500 SAMMIE       SAMMIE       21-FEB-22      39500       2000 NW      41500
+C010 CONNER       OAKS                            0       2000 SE       2000
+
+SQL> insert into acctmanager (amid, amfirst, amlast, amsal, amcomm, region, amearn)
+  2  values ('D500', 'SCOTT', 'DAVIS', 53000, 6000, 'SE', 59000);
+insert into acctmanager (amid, amfirst, amlast, amsal, amcomm, region, amearn)
+                                                                       *
+ERROR at line 1:
+ORA-54013: INSERT operation disallowed on virtual columns
+
+SQL> insert into acctmanager (amid, amfirst, amlast, amsal, amcomm, region)
+  2  values ('D500', 'SCOTT', 'DAVIS', 53000, 6000, 'SE');
+
+SQL> select *
+  2  from acctmanager;
+
+AMID AMFIRST      AMLAST       AMEDATE        AMSAL     AMCOMM RE     AMEARN
+---- ------------ ------------ --------- ---------- ---------- -- ----------
+T500 NICK         Taylor       05-SEP-09      42000       3500 NE      45500
+L500 MANDY        LOPEZ        01-OCT-09       4700       1500          6200
+J500 SAMMIE       SAMMIE       21-FEB-22      39500       2000 NW      41500
+C010 CONNER       OAKS                            0       2000 SE       2000
+D500 SCOTT        DAVIS        21-FEB-22      53000       6000 SE      59000
+
+SQL> insert into acctmanager (amid, amfirst, amlast, amsal, amcomm, region)
+  2  values('M500', 'Peg', 'O'hara', 46000, 2000, 'SW');
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+SQL> insert into acctmanager (amid, amfirst, amlast, amsal, amcomm, region)
+  2  values('M500', 'Peg', 'O''hara', 46000, 2000, 'SW');
+
+1 row created.
+
+SQL> select *
+  2  from acctmanager;
+
+AMID AMFIRST      AMLAST       AMEDATE        AMSAL     AMCOMM RE     AMEARN
+---- ------------ ------------ --------- ---------- ---------- -- ----------
+T500 NICK         Taylor       05-SEP-09      42000       3500 NE      45500
+L500 MANDY        LOPEZ        01-OCT-09       4700       1500          6200
+J500 SAMMIE       SAMMIE       21-FEB-22      39500       2000 NW      41500
+C010 CONNER       OAKS                            0       2000 SE       2000
+D500 SCOTT        DAVIS        21-FEB-22      53000       6000 SE      59000
+M500 Peg          O'hara       21-FEB-22      46000       2000 SW      48000
+
+6 rows selected.
+
+SQL> insert into acctbonus (amid, amsal, region)
+  2  select amid, amsal, region
+  3  from acctmanager;
+
+6 rows created.
+
+SQL> select *
+  2  from acctbonus;
+
+AMID      AMSAL RE
+---- ---------- --
+T500      42000 NE
+L500       4700
+J500      39500 NW
+C010          0 SE
+D500      53000 SE
+M500      46000 SW
+
+6 rows selected.
+
+SQL> update acctmanager
+  2  set amedate = '01-AUG-09'
+  3  where amid = 'J500';
+
+SQL> select *
+  2  from  acctmanager
+  3  ;
+
+AMID AMFIRST      AMLAST       AMEDATE        AMSAL     AMCOMM RE     AMEARN
+---- ------------ ------------ --------- ---------- ---------- -- ----------
+T500 NICK         Taylor       05-SEP-09      42000       3500 NE      45500
+L500 MANDY        LOPEZ        01-OCT-09       4700       1500          6200
+J500 SAMMIE       SAMMIE       01-AUG-09      39500       2000 NW      41500
+C010 CONNER       OAKS                            0       2000 SE       2000
+D500 SCOTT        DAVIS        21-FEB-22      53000       6000 SE      59000
+M500 Peg          O'hara       21-FEB-22      46000       2000 SW      48000
+
+SQL> update acctmanager
+  2  set region ='W'
+  3  where region in ('NE', 'NW');
+
+2 rows updated.
+
+SQL> select *
+  2  from acctmanager;
+
+AMID AMFIRST      AMLAST       AMEDATE        AMSAL     AMCOMM RE     AMEARN
+---- ------------ ------------ --------- ---------- ---------- -- ----------
+T500 NICK         Taylor       05-SEP-09      42000       3500 W       45500
+L500 MANDY        LOPEZ        01-OCT-09       4700       1500          6200
+J500 SAMMIE       SAMMIE       01-AUG-09      39500       2000 W       41500
+C010 CONNER       OAKS                            0       2000 SE       2000
+D500 SCOTT        DAVIS        21-FEB-22      53000       6000 SE      59000
+M500 Peg          O'hara       21-FEB-22      46000       2000 SW      48000
+
+6 rows selected.
+
+
+SQL> update acctmanager
+  2  set amedate = '10-OCT-09',
+  3     region = 'S'
+  4  where amid = 'L500';
+
+1 row updated.
+
+SQL> select *
+  2  from acctmanager
+  3  ;
+
+AMID AMFIRST      AMLAST       AMEDATE        AMSAL     AMCOMM RE     AMEARN
+---- ------------ ------------ --------- ---------- ---------- -- ----------
+T500 NICK         Taylor       05-SEP-09      42000       3500 W       45500
+L500 MANDY        LOPEZ        10-OCT-09       4700       1500 S        6200
+J500 SAMMIE       SAMMIE       01-AUG-09      39500       2000 W       41500
+C010 CONNER       OAKS                            0       2000 SE       2000
+D500 SCOTT        DAVIS        21-FEB-22      53000       6000 SE      59000
+M500 Peg          O'hara       21-FEB-22      46000       2000 SW      48000
+
+6 rows selected.
+
+SQL> update customers
+  2  set region ='';
+
+20 rows updated.
+
+SQL> select * from customers;
+
+ CUSTOMER# LASTNAME   FIRSTNAME  ADDRESS              CITY         ST ZIP     REFERRED RE EMAIL
+---------- ---------- ---------- -------------------- ------------ -- ----- ---------- -- ------------------------------
+      1001 MORALES    BONITA     P.O. BOX 651         EASTPOINT    FL 32328               bm225@sat.net
+      1002 THOMPSON   RYAN       P.O. BOX 9835        SANTA MONICA CA 90404
+      1003 SMITH      LEILA      P.O. BOX 66          TALLAHASSEE  FL 32306
+      1004 PIERSON    THOMAS     69821 SOUTH AVENUE   BOISE        ID 83707               tpier55@sat.net
+      1005 GIRARD     CINDY      P.O. BOX 851         SEATTLE      WA 98115               cing101@zep.net
+      1006 CRUZ       MESHIA     82 DIRT ROAD         ALBANY       NY 12211               cruztop@axe.com
+      1007 GIANA      TAMMY      9153 MAIN STREET     AUSTIN       TX 78710       1003    treetop@zep.net
+      1008 JONES      KENNETH    P.O. BOX 137         CHEYENNE     WY 82003               kenask@sat.net
+      1009 PEREZ      JORGE      P.O. BOX 8564        BURBANK      CA 91510       1003    jperez@canet.com
+      1010 LUCAS      JAKE       114 EAST SAVANNAH    ATLANTA      GA 30314
+      1011 MCGOVERN   REESE      P.O. BOX 18          CHICAGO      IL 60606               reesemc@sat.net
+      1012 MCKENZIE   WILLIAM    P.O. BOX 971         BOSTON       MA 02110               will2244@axe.net
+      1013 NGUYEN     NICHOLAS   357 WHITE EAGLE AVE. CLERMONT     FL 34711       1006    nguy33@sat.net
+      1014 LEE        JASMINE    P.O. BOX 2947        CODY         WY 82414               jaslee@sat.net
+      1015 SCHELL     STEVE      P.O. BOX 677         MIAMI        FL 33111               sschell3@sat.net
+      1016 DAUM       MICHELL    9851231 LONG ROAD    BURBANK      CA 91508       1010
+      1017 NELSON     BECCA      P.O. BOX 563         KALMAZOO     MI 49006               becca88@digs.com
+      1018 MONTIASA   GREG       1008 GRAND AVENUE    MACON        GA 31206               greg336@sat.net
+      1019 SMITH      JENNIFER   P.O. BOX 1151        MORRISTOWN   NJ 07962       1003
+      1020 FALAH      KENNETH    P.O. BOX 335         TRENTON      NJ 08607               Kfalah@sat.net
+
+20 rows selected.
+
+SQL> update customers
+  2  set region ='W'
+  3  where state ='CA';
+
+3 rows updated.
+
+SQL> select * from customers
+  2  ;
+
+ CUSTOMER# LASTNAME   FIRSTNAME  ADDRESS              CITY         ST ZIP     REFERRED RE EMAIL
+---------- ---------- ---------- -------------------- ------------ -- ----- ---------- -- ------------------------------
+      1001 MORALES    BONITA     P.O. BOX 651         EASTPOINT    FL 32328               bm225@sat.net
+      1002 THOMPSON   RYAN       P.O. BOX 9835        SANTA MONICA CA 90404            W
+      1003 SMITH      LEILA      P.O. BOX 66          TALLAHASSEE  FL 32306
+      1004 PIERSON    THOMAS     69821 SOUTH AVENUE   BOISE        ID 83707               tpier55@sat.net
+      1005 GIRARD     CINDY      P.O. BOX 851         SEATTLE      WA 98115               cing101@zep.net
+      1006 CRUZ       MESHIA     82 DIRT ROAD         ALBANY       NY 12211               cruztop@axe.com
+      1007 GIANA      TAMMY      9153 MAIN STREET     AUSTIN       TX 78710       1003    treetop@zep.net
+      1008 JONES      KENNETH    P.O. BOX 137         CHEYENNE     WY 82003               kenask@sat.net
+      1009 PEREZ      JORGE      P.O. BOX 8564        BURBANK      CA 91510       1003 W  jperez@canet.com
+      1010 LUCAS      JAKE       114 EAST SAVANNAH    ATLANTA      GA 30314
+      1011 MCGOVERN   REESE      P.O. BOX 18          CHICAGO      IL 60606               reesemc@sat.net
+      1012 MCKENZIE   WILLIAM    P.O. BOX 971         BOSTON       MA 02110               will2244@axe.net
+      1013 NGUYEN     NICHOLAS   357 WHITE EAGLE AVE. CLERMONT     FL 34711       1006    nguy33@sat.net
+      1014 LEE        JASMINE    P.O. BOX 2947        CODY         WY 82414               jaslee@sat.net
+      1015 SCHELL     STEVE      P.O. BOX 677         MIAMI        FL 33111               sschell3@sat.net
+      1016 DAUM       MICHELL    9851231 LONG ROAD    BURBANK      CA 91508       1010 W
+      1017 NELSON     BECCA      P.O. BOX 563         KALMAZOO     MI 49006               becca88@digs.com
+      1018 MONTIASA   GREG       1008 GRAND AVENUE    MACON        GA 31206               greg336@sat.net
+      1019 SMITH      JENNIFER   P.O. BOX 1151        MORRISTOWN   NJ 07962       1003
+      1020 FALAH      KENNETH    P.O. BOX 335         TRENTON      NJ 08607               Kfalah@sat.net
+
+20 rows selected.
+
+SQL> update customers
+  2  set region = '&Region'
+  3  where state = '&State';
+Enter value for region: W
+old   2: set region = '&Region'
+new   2: set region = 'W'
+Enter value for state: CA
+old   3: where state = '&State'
+new   3: where state = 'CA'
+
+3 rows updated.
+
+SQL> select * from customers;
+
+ CUSTOMER# LASTNAME   FIRSTNAME  ADDRESS              CITY         ST ZIP     REFERRED RE EMAIL
+---------- ---------- ---------- -------------------- ------------ -- ----- ---------- -- ------------------------------
+      1001 MORALES    BONITA     P.O. BOX 651         EASTPOINT    FL 32328               bm225@sat.net
+      1002 THOMPSON   RYAN       P.O. BOX 9835        SANTA MONICA CA 90404            W
+      1003 SMITH      LEILA      P.O. BOX 66          TALLAHASSEE  FL 32306
+      1004 PIERSON    THOMAS     69821 SOUTH AVENUE   BOISE        ID 83707               tpier55@sat.net
+      1005 GIRARD     CINDY      P.O. BOX 851         SEATTLE      WA 98115               cing101@zep.net
+      1006 CRUZ       MESHIA     82 DIRT ROAD         ALBANY       NY 12211               cruztop@axe.com
+      1007 GIANA      TAMMY      9153 MAIN STREET     AUSTIN       TX 78710       1003    treetop@zep.net
+      1008 JONES      KENNETH    P.O. BOX 137         CHEYENNE     WY 82003               kenask@sat.net
+      1009 PEREZ      JORGE      P.O. BOX 8564        BURBANK      CA 91510       1003 W  jperez@canet.com
+      1010 LUCAS      JAKE       114 EAST SAVANNAH    ATLANTA      GA 30314
+      1011 MCGOVERN   REESE      P.O. BOX 18          CHICAGO      IL 60606               reesemc@sat.net
+      1012 MCKENZIE   WILLIAM    P.O. BOX 971         BOSTON       MA 02110               will2244@axe.net
+      1013 NGUYEN     NICHOLAS   357 WHITE EAGLE AVE. CLERMONT     FL 34711       1006    nguy33@sat.net
+      1014 LEE        JASMINE    P.O. BOX 2947        CODY         WY 82414               jaslee@sat.net
+      1015 SCHELL     STEVE      P.O. BOX 677         MIAMI        FL 33111               sschell3@sat.net
+      1016 DAUM       MICHELL    9851231 LONG ROAD    BURBANK      CA 91508       1010 W
+      1017 NELSON     BECCA      P.O. BOX 563         KALMAZOO     MI 49006               becca88@digs.com
+      1018 MONTIASA   GREG       1008 GRAND AVENUE    MACON        GA 31206               greg336@sat.net
+      1019 SMITH      JENNIFER   P.O. BOX 1151        MORRISTOWN   NJ 07962       1003
+      1020 FALAH      KENNETH    P.O. BOX 335         TRENTON      NJ 08607               Kfalah@sat.net
+
+20 rows selected.
+
+SQL> update customers
+  2  set region = '&Region'
+  3  where state = '&State';
+Enter value for region: SE
+old   2: set region = '&Region'
+new   2: set region = 'SE'
+Enter value for state: FL
+old   3: where state = '&State'
+new   3: where state = 'FL'
+
+4 rows updated.
+
+SQL> select *from customers;
+
+ CUSTOMER# LASTNAME   FIRSTNAME  ADDRESS              CITY         ST ZIP     REFERRED RE EMAIL
+---------- ---------- ---------- -------------------- ------------ -- ----- ---------- -- ------------------------------
+      1001 MORALES    BONITA     P.O. BOX 651         EASTPOINT    FL 32328            SE bm225@sat.net
+      1002 THOMPSON   RYAN       P.O. BOX 9835        SANTA MONICA CA 90404            W
+      1003 SMITH      LEILA      P.O. BOX 66          TALLAHASSEE  FL 32306            SE
+      1004 PIERSON    THOMAS     69821 SOUTH AVENUE   BOISE        ID 83707               tpier55@sat.net
+      1005 GIRARD     CINDY      P.O. BOX 851         SEATTLE      WA 98115               cing101@zep.net
+      1006 CRUZ       MESHIA     82 DIRT ROAD         ALBANY       NY 12211               cruztop@axe.com
+      1007 GIANA      TAMMY      9153 MAIN STREET     AUSTIN       TX 78710       1003    treetop@zep.net
+      1008 JONES      KENNETH    P.O. BOX 137         CHEYENNE     WY 82003               kenask@sat.net
+      1009 PEREZ      JORGE      P.O. BOX 8564        BURBANK      CA 91510       1003 W  jperez@canet.com
+      1010 LUCAS      JAKE       114 EAST SAVANNAH    ATLANTA      GA 30314
+      1011 MCGOVERN   REESE      P.O. BOX 18          CHICAGO      IL 60606               reesemc@sat.net
+      1012 MCKENZIE   WILLIAM    P.O. BOX 971         BOSTON       MA 02110               will2244@axe.net
+      1013 NGUYEN     NICHOLAS   357 WHITE EAGLE AVE. CLERMONT     FL 34711       1006 SE nguy33@sat.net
+      1014 LEE        JASMINE    P.O. BOX 2947        CODY         WY 82414               jaslee@sat.net
+      1015 SCHELL     STEVE      P.O. BOX 677         MIAMI        FL 33111            SE sschell3@sat.net
+      1016 DAUM       MICHELL    9851231 LONG ROAD    BURBANK      CA 91508       1010 W
+      1017 NELSON     BECCA      P.O. BOX 563         KALMAZOO     MI 49006               becca88@digs.com
+      1018 MONTIASA   GREG       1008 GRAND AVENUE    MACON        GA 31206               greg336@sat.net
+      1019 SMITH      JENNIFER   P.O. BOX 1151        MORRISTOWN   NJ 07962       1003
+      1020 FALAH      KENNETH    P.O. BOX 335         TRENTON      NJ 08607               Kfalah@sat.net
+
+20 rows selected.
+
+
+SQL> Delete from acctmanager
+  2  where amid = 'J500';
+
+1 row deleted.
+
+SQL> select * from acctmanager
+  2  ;
+
+AMID AMFIRST      AMLAST       AMEDATE        AMSAL     AMCOMM RE     AMEARN
+---- ------------ ------------ --------- ---------- ---------- -- ----------
+T500 NICK         Taylor       05-SEP-09      42000       3500 W       45500
+L500 MANDY        LOPEZ        10-OCT-09       4700       1500 S        6200
+C010 CONNER       OAKS                            0       2000 SE       2000
+D500 SCOTT        DAVIS        21-FEB-22      53000       6000 SE      59000
+M500 Peg          O'hara       21-FEB-22      46000       2000 SW      48000
+
+SQL> update acctmanager
+  2  set region = 'E'
+  3  where amid = 'M500';
+
+1 row updated.
+
+SQL> commit
+  2  ;
+
+Commit complete.
+
+SQL> update acctmanager
+  2  set region = 'E'
+  3  where amid= 'T500';
+
+1 row updated.
+
+SQL> Update acctmanager
+  2  set region = 'E'
+  3  where amid = 'L500'
+  4  ;
+
+1 row updated.
+
+SQL> savepoint one;
+
+Savepoint created.
+
+SQL> Update acctmanager
+  2  set amcomm = 6600
+  3  where amid = 'T500';
+
+1 row updated.
+
+SQL> select *from acctmanager
+  2  ;
+
+AMID AMFIRST      AMLAST       AMEDATE        AMSAL     AMCOMM RE     AMEARN
+---- ------------ ------------ --------- ---------- ---------- -- ----------
+T500 NICK         Taylor       05-SEP-09      42000       6600 E       48600
+L500 MANDY        LOPEZ        10-OCT-09       4700       1500 E        6200
+C010 CONNER       OAKS                            0       2000 SE       2000
+D500 SCOTT        DAVIS        21-FEB-22      53000       6000 SE      59000
+M500 Peg          O'hara       21-FEB-22      46000       2000 E       48000
+
+SQL> rollback to one
+  2  ;
+
+Rollback complete.
+
+SQL> select * from acctmanager;
+
+AMID AMFIRST      AMLAST       AMEDATE        AMSAL     AMCOMM RE     AMEARN
+---- ------------ ------------ --------- ---------- ---------- -- ----------
+T500 NICK         Taylor       05-SEP-09      42000       3500 E       45500
+L500 MANDY        LOPEZ        10-OCT-09       4700       1500 E        6200
+C010 CONNER       OAKS                            0       2000 SE       2000
+D500 SCOTT        DAVIS        21-FEB-22      53000       6000 SE      59000
+M500 Peg          O'hara       21-FEB-22      46000       2000 E       48000
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * from acctmanager;
+
+AMID AMFIRST      AMLAST       AMEDATE        AMSAL     AMCOMM RE     AMEARN
+---- ------------ ------------ --------- ---------- ---------- -- ----------
+T500 NICK         Taylor       05-SEP-09      42000       3500 W       45500
+L500 MANDY        LOPEZ        10-OCT-09       4700       1500 S        6200
+C010 CONNER       OAKS                            0       2000 SE       2000
+D500 SCOTT        DAVIS        21-FEB-22      53000       6000 SE      59000
+M500 Peg          O'hara       21-FEB-22      46000       2000 E       48000

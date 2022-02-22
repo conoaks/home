@@ -1,0 +1,212 @@
+Conner Oaks
+follow along module 4
+
+SQL> ALTER TABLE customers
+  2  ADD CONSTRAINT customers_customers#_pk PRIMARY KEY (customer#);
+
+Table altered.
+
+SQL> INSERT INTO customers (customer#, lastname, firstname, region)
+  2  VALUES(1020, 'PADDY', 'JACK', 'NE');
+INSERT INTO customers (customer#, lastname, firstname, region)
+*
+ERROR at line 1:
+ORA-00001: unique constraint
+(C##STUDENT4.CUSTOMERS_CUSTOMERS#_PK) violated
+
+SQL> INSERT INTO customers (customer#, lastname, firstname, region)
+  2  VALUES(1022, 'PADDY', 'JACK', 'NE');
+
+1 row created.
+
+SQL>  select *
+  2   from customers;
+
+ CUSTOMER# LASTNAME   FIRSTNAME  ADDRESS              CITY         ST ZIP     REFERRED RE
+---------- ---------- ---------- -------------------- ------------ -- ----- ---------- --
+      1001 MORALES    BONITA     P.O. BOX 651         EASTPOINT    FL 32328            SE
+      1002 THOMPSON   RYAN       P.O. BOX 9835        SANTA MONICA CA 90404            W
+      1003 SMITH      LEILA      P.O. BOX 66          TALLAHASSEE  FL 32306            SE
+      1004 PIERSON    THOMAS     69821 SOUTH AVENUE   BOISE        ID 83707            NW
+      1005 GIRARD     CINDY      P.O. BOX 851         SEATTLE      WA 98115            NW
+      1006 CRUZ       MESHIA     82 DIRT ROAD         ALBANY       NY 12211            NE
+      1007 GIANA      TAMMY      9153 MAIN STREET     AUSTIN       TX 78710       1003 SW
+      1008 JONES      KENNETH    P.O. BOX 137         CHEYENNE     WY 82003            N
+      1009 PEREZ      JORGE      P.O. BOX 8564        BURBANK      CA 91510       1003 W
+      1010 LUCAS      JAKE       114 EAST SAVANNAH    ATLANTA      GA 30314            SE
+      1011 MCGOVERN   REESE      P.O. BOX 18          CHICAGO      IL 60606            N
+      1012 MCKENZIE   WILLIAM    P.O. BOX 971         BOSTON       MA 02110            NE
+      1013 NGUYEN     NICHOLAS   357 WHITE EAGLE AVE. CLERMONT     FL 34711       1006 SE
+      1014 LEE        JASMINE    P.O. BOX 2947        CODY         WY 82414            N
+      1015 SCHELL     STEVE      P.O. BOX 677         MIAMI        FL 33111            SE
+      1016 DAUM       MICHELL    9851231 LONG ROAD    BURBANK      CA 91508       1010 W
+      1017 NELSON     BECCA      P.O. BOX 563         KALMAZOO     MI 49006            N
+      1018 MONTIASA   GREG       1008 GRAND AVENUE    MACON        GA 31206            SE
+      1019 SMITH      JENNIFER   P.O. BOX 1151        MORRISTOWN   NJ 07962       1003 NE
+      1020 FALAH      KENNETH    P.O. BOX 335         TRENTON      NJ 08607            NE
+      1022 PADDY      JACK                                                             NE
+
+21 rows selected.
+
+SQL> alter table orders
+  2  add constraint orders_customer#_fk FOREIGN KEY (customer#)
+  3  references customers (customer#);
+
+Table altered.
+
+SQL> insert into orders (order#, customer#, orderdate)
+  2  values (1021, 2000, '06-APR-09');
+insert into orders (order#, customer#, orderdate)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (C##STUDENT4.ORDERS_CUSTOMER#_FK) violated - parent key not found
+
+SQL> drop table customers;
+drop table customers
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys
+
+SQL> create table dept
+  2  (deptid number(2),
+  3  dname VARCHAR2(20) NOT NULL,
+  4  fax VARCHAR2(12),
+  5     constraint dept_deptid_pk PRIMARY KEY (deptid),
+  6     constraint dept_dname_uk UNIQUE (dname));
+
+Table created.
+
+SQL> create table equip
+  2  (equipid number(3),
+  3  edesc varchar2(30),
+  4  purchdate DATE,
+  5  rating CHAR(1),
+  6  deptid NUMBER(2) not null,
+  7  etypeid NUMBER(2),
+  8     constraint equip_equipid_pk PRIMARY KEY (equipid),
+  9     constraint equip_deptid_fk FOREIGN KEY (deptid)
+ 10             references dept (deptid),
+ 11     constraint equip_etypeid_fk FOREIGN KEY (etypeid)
+ 12             references etypes (etypeid),
+ 13  constraint equip_rating_ck CHECK (rating IN('A', 'B', 'C')));
+
+Table created.
+
+SQL> select table_name
+  2  from user_tables;
+
+TABLE_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+CUSTOMERS
+ORDERS
+PUBLISHER
+AUTHOR
+BOOKS
+ORDERITEMS
+BOOKAUTHOR
+PROMOTION
+ACCTMANAGER
+ACCTMANAGER2
+DEPT
+ETYPES
+EQUIP
+
+13 rows selected.
+
+SQL> alter table books
+  2  add constraint books_title_uk UNIQUE (title);
+
+Table altered.
+
+SQL> insert into books (isbn, title)
+  2  values (1212121212, 'SHORTEST POEMS');
+insert into books (isbn, title)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (C##STUDENT4.BOOKS_TITLE_UK) violated
+
+SQL> alter table orders
+  2  add constraint orders_shipdate_ck CHECK (orderdate<=shipdate);
+
+Table altered.
+
+SQL> insert into orders(order#, customer#, orderdate, shipdate)
+  2  values(1021, 1008, '06-APR-09', '05-APR-09');
+insert into orders(order#, customer#, orderdate, shipdate)
+*
+ERROR at line 1:
+ORA-02290: check constraint (C##STUDENT4.ORDERS_SHIPDATE_CK) violated
+
+SQL> alter table orderitems
+  2  add constraint orderitems_quantity_ck CHECK (quantity>0);
+
+SQL> insert into orderitems (order#, item#, quantity, paideach)
+  2  values(1020, 2, 0, 22);
+insert into orderitems (order#, item#, quantity, paideach)
+*
+ERROR at line 1:
+ORA-02290: check constraint (C##STUDENT4.ORDERITEMS_QUANTITY_CK) violated
+
+SQL> alter table orders
+  2  modify (customer# constraint orders_customer#_nn NOT NULL);
+
+Table altered.
+
+SQL> insert into orders (order#, customer#, orderdate)
+  2  values (1021, null, '06-APR-09');
+values (1021, null, '06-APR-09')
+              *
+ERROR at line 2:
+ORA-01400: cannot insert NULL into ("C##STUDENT4"."ORDERS"."CUSTOMER#")
+
+SQL> alter table orders
+  2  add constraint orders_order#_pk PRIMARY KEY (order#);
+
+Table altered.
+
+SQL> alter table books
+  2  add constraint books_isbn_pk PRIMARY KEY (isbn);
+
+Table altered.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  create table orderitems
+  2   (order# number(4),
+  3     item# number(2),
+  4      ISBN varchar2(10),
+  5      Quantity number(3) not null,
+  6      paideach number(5,2) Not Null,
+  7         constraint orderitems_order#item#_pk PRIMARY KEY (order#, item#),
+  8         constraint orderitems_order#_fk FOREIGN KEY (order#)
+  9                 references orders (order#),
+ 10        constraint orderitems_isbn_fk FOREIGN KEY (isbn)
+ 11                references books (isbn),
+ 12*      constraint orderitems_quantity_ck CHECK (quantity > 0))
+SQL>
+SQL> /
+
+Table created.
+
+SQL> alter table equip
+  2  disable constraint equip_rating_ck;
+
+Table altered.
+
+SQL> alter table equip
+  2  enable constraint equip_rating_ck;
+
+Table altered.
+
+SQL> alter table equip
+  2     drop constraint equip_rating_ck;
+
+Table altered.
+
+
+SQL> alter table customers
+  2  drop primary key cascade;
+
+Table altered.
+

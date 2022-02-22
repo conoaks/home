@@ -1,0 +1,499 @@
+Conner Oaks
+Chapter3
+
+SQL> select table_name
+  2  from user_tables;
+
+TABLE_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+CUSTOMERS
+ORDERS
+PUBLISHER
+AUTHOR
+BOOKS
+ORDERITEMS
+BOOKAUTHOR
+PROMOTION
+
+8 rows selected.
+
+after
+
+SQL> create table acctmanager
+  2  (amid CHAR(4),
+  3   amfirst VARCHAR2(12),
+  4   amlast VARCHAR2(12),
+  5   amedate DATE DEFAULT SYSDATE,
+  6   amsal NUMBER(8,2),
+  7   amcomm NUMBER(7,2) DEFAULT 0,
+  8   amearn AS (amsal+ amcomm),
+  9   region CHAR(2) );
+
+Table created.
+
+SQL> select table_name
+  2  from user_tables;
+
+TABLE_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+CUSTOMERS
+ORDERS
+PUBLISHER
+AUTHOR
+BOOKS
+ORDERITEMS
+BOOKAUTHOR
+PROMOTION
+ACCTMANAGER
+
+9 rows selected.
+
+SQL> desc acctmanager
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ AMID                                                                                   CHAR(4)
+ AMFIRST                                                                                VARCHAR2(12)
+ AMLAST                                                                                 VARCHAR2(12)
+ AMEDATE                                                                                DATE
+ AMSAL                                                                                  NUMBER(8,2)
+ AMCOMM                                                                                 NUMBER(7,2)
+ AMEARN                                                                                 NUMBER
+ REGION                                                                                 CHAR(2)
+
+SQL> select column_name, data_type, data_default
+  2  from user_tab_columns
+  3  where table_name ='ACCTMANAGER';
+
+COLUMN_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+DATA_TYPE
+--------------------------------------------------------------------------------------------------------------------------------
+DATA_DEFAULT
+--------------------------------------------------------------------------------
+AMID
+CHAR
+
+
+AMFIRST
+VARCHAR2
+
+
+AMLAST
+VARCHAR2
+
+
+AMEDATE
+DATE
+SYSDATE
+
+AMSAL
+NUMBER
+
+
+AMCOMM
+NUMBER
+0
+
+AMEARN
+NUMBER
+"AMSAL"+"AMCOMM"
+
+REGION
+CHAR
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  CREATE TABLE TEST_INVIS (
+  2  col1 CHAR(1),
+  3* col2 NUMBER(4) invisible )
+SQL> /
+
+Table created.
+
+SQL> select column_name, hidden_column
+  2  from user_tab_cols
+  3  where table_name='TEST_INVIS';
+
+COLUMN_NAME                                                                                                                      HID
+-------------------------------------------------------------------------------------------------------------------------------- ---
+COL1                                                                                                                             NO
+COL2                                                                                                                             YES
+
+SQL> create table cust_mkt
+  2  as (SELECT customer#, city, state, zip, referred, region
+  3     from customers);
+
+Table created.
+
+SQL> select table_name
+  2  from user_tables;
+
+TABLE_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+CUSTOMERS
+ORDERS
+PUBLISHER
+AUTHOR
+BOOKS
+ORDERITEMS
+BOOKAUTHOR
+PROMOTION
+ACCTMANAGER
+CUST_MKT
+TEST_INVIS
+
+11 rows selected.
+
+SQL> select *
+  2  from cust_mkt;
+
+ CUSTOMER# CITY         ST ZIP     REFERRED RE
+---------- ------------ -- ----- ---------- --
+      1001 EASTPOINT    FL 32328            SE
+      1002 SANTA MONICA CA 90404            W
+      1003 TALLAHASSEE  FL 32306            SE
+      1004 BOISE        ID 83707            NW
+      1005 SEATTLE      WA 98115            NW
+      1006 ALBANY       NY 12211            NE
+      1007 AUSTIN       TX 78710       1003 SW
+      1008 CHEYENNE     WY 82003            N
+      1009 BURBANK      CA 91510       1003 W
+      1010 ATLANTA      GA 30314            SE
+      1011 CHICAGO      IL 60606            N
+      1012 BOSTON       MA 02110            NE
+      1013 CLERMONT     FL 34711       1006 SE
+      1014 CODY         WY 82414            N
+      1015 MIAMI        FL 33111            SE
+      1016 BURBANK      CA 91508       1010 W
+      1017 KALMAZOO     MI 49006            N
+      1018 MACON        GA 31206            SE
+      1019 MORRISTOWN   NJ 07962       1003 NE
+      1020 TRENTON      NJ 08607            NE
+
+20 rows selected.
+
+SQL> desc cust_mkt
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ CUSTOMER#                                                                              NUMBER(4)
+ CITY                                                                                   VARCHAR2(12)
+ STATE                                                                                  VARCHAR2(2)
+ ZIP                                                                                    VARCHAR2(5)
+ REFERRED                                                                               NUMBER(4)
+ REGION                                                                                 CHAR(2)
+
+SQL> desc publisher
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ PUBID                                                                         NOT NULL NUMBER(2)
+ NAME                                                                                   VARCHAR2(23)
+ CONTACT                                                                                VARCHAR2(15)
+ PHONE                                                                                  VARCHAR2(12)
+
+SQL> alter table publisher
+  2  add ( ext NUMBER(4));
+
+Table altered.
+
+SQL> desc publisher
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ PUBID                                                                         NOT NULL NUMBER(2)
+ NAME                                                                                   VARCHAR2(23)
+ CONTACT                                                                                VARCHAR2(15)
+ PHONE                                                                                  VARCHAR2(12)
+ EXT                                                                                    NUMBER(4)
+
+SQL> desc books
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ ISBN                                                                          NOT NULL VARCHAR2(10)
+ TITLE                                                                                  VARCHAR2(30)
+ PUBDATE                                                                                DATE
+ PUBID                                                                                  NUMBER(2)
+ COST                                                                                   NUMBER(5,2)
+ RETAIL                                                                                 NUMBER(5,2)
+ DISCOUNT                                                                               NUMBER(4,2)
+ CATEGORY                                                                               VARCHAR2(12)
+
+SQL> alter table books
+  2  modify (title VARCHAR2(10));
+modify (title VARCHAR2(10))
+        *
+ERROR at line 2:
+ORA-01441: cannot decrease column length because some value is too big
+
+SQL> alter table books
+  2  modify (retail NUMBER(5,1));
+modify (retail NUMBER(5,1))
+        *
+ERROR at line 2:
+ORA-01440: column to be modified must be empty to decrease precision or scale
+
+SQL> alter table publisher
+  2  modify (rating  DEFAULT 'N');
+
+Table altered.
+
+SQL> select *
+  2  from publisher
+  3  ;
+
+     PUBID NAME                    CONTACT         PHONE               EXT R
+---------- ----------------------- --------------- ------------ ---------- -
+         1 PRINTING IS US          TOMMIE SEYMOUR  000-714-8321
+         2 PUBLISH OUR WAY         JANE TOMLIN     010-410-0010
+         3 AMERICAN PUBLISHING     DAVID DAVIDSON  800-555-1211
+         4 READING MATERIALS INC.  RENEE SMITH     800-555-9743
+         5 REED-N-RITE             SEBASTIAN JONES 800-555-8284
+
+SQL> desc publisher
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ PUBID                                                                         NOT NULL NUMBER(2)
+ NAME                                                                                   VARCHAR2(23)
+ CONTACT                                                                                VARCHAR2(15)
+ PHONE                                                                                  VARCHAR2(12)
+ EXT                                                                                    NUMBER(4)
+ RATING                                                                                 CHAR(1)
+
+SQL> desc acctmanager
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ AMID                                                                                   CHAR(4)
+ AMFIRST                                                                                VARCHAR2(12)
+ AMLAST                                                                                 VARCHAR2(12)
+ AMEDATE                                                                                DATE
+ AMSAL                                                                                  NUMBER(8,2)
+ AMCOMM                                                                                 NUMBER(7,2)
+ AMEARN                                                                                 NUMBER
+ REGION                                                                                 CHAR(2)
+
+SQL> alter table acctmanager
+  2  modify (amlast varchar2(18));
+
+Table altered.
+
+SQL> desc acctmanager
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ AMID                                                                                   CHAR(4)
+ AMFIRST                                                                                VARCHAR2(12)
+ AMLAST                                                                                 VARCHAR2(18)
+ AMEDATE                                                                                DATE
+ AMSAL                                                                                  NUMBER(8,2)
+ AMCOMM                                                                                 NUMBER(7,2)
+ AMEARN                                                                                 NUMBER
+ REGION                                                                                 CHAR(2)
+
+SQL> desc publisher
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ PUBID                                                                         NOT NULL NUMBER(2)
+ NAME                                                                                   VARCHAR2(23)
+ CONTACT                                                                                VARCHAR2(15)
+ PHONE                                                                                  VARCHAR2(12)
+ EXT                                                                                    NUMBER(4)
+ RATING                                                                                 CHAR(1)
+
+SQL> alter table publisher
+  2  drop column ext;
+
+Table altered.
+
+SQL> desc publisher
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ PUBID                                                                         NOT NULL NUMBER(2)
+ NAME                                                                                   VARCHAR2(23)
+ CONTACT                                                                                VARCHAR2(15)
+ PHONE                                                                                  VARCHAR2(12)
+ RATING                                                                                 CHAR(1)
+
+SQL> desc cust_mkt
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ CUSTOMER#                                                                              NUMBER(4)
+ CITY                                                                                   VARCHAR2(12)
+ STATE                                                                                  VARCHAR2(2)
+ ZIP                                                                                    VARCHAR2(5)
+ REFERRED                                                                               NUMBER(4)
+ REGION                                                                                 CHAR(2)
+
+SQL> alter table cust_mkt
+  2  set unused(state);
+
+Table altered.
+
+SQL> desc  cust_mkt
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ CUSTOMER#                                                                              NUMBER(4)
+ CITY                                                                                   VARCHAR2(12)
+ ZIP                                                                                    VARCHAR2(5)
+ REFERRED                                                                               NUMBER(4)
+ REGION                                                                                 CHAR(2)
+
+SQL> select *
+  2  from user_unused_col_tabs;
+
+TABLE_NAME                                                                                                                            COUNT
+-------------------------------------------------------------------------------------------------------------------------------- ----------
+CUST_MKT                                                                                                                                  1
+
+SQL> alter table cust_mkt
+  2  drop unused columns;
+
+Table altered.
+
+SQL> desc cust_mkt
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ CUSTOMER#                                                                              NUMBER(4)
+ CITY                                                                                   VARCHAR2(12)
+ ZIP                                                                                    VARCHAR2(5)
+ REFERRED                                                                               NUMBER(4)
+ REGION                                                                                 CHAR(2)
+
+SQL> rename cust_mkt TO cust_mkt_092009;
+
+Table renamed.
+
+SQL> select table_name
+  2  from user_tables;
+
+TABLE_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+CUSTOMERS
+ORDERS
+PUBLISHER
+AUTHOR
+BOOKS
+ORDERITEMS
+BOOKAUTHOR
+PROMOTION
+ACCTMANAGER
+TEST_INVIS
+CUST_MKT_092009
+
+11 rows selected.
+
+SQL> select *
+  2  from cust_mkt_092009;
+
+ CUSTOMER# CITY         ZIP     REFERRED RE
+---------- ------------ ----- ---------- --
+      1001 EASTPOINT    32328            SE
+      1002 SANTA MONICA 90404            W
+      1003 TALLAHASSEE  32306            SE
+      1004 BOISE        83707            NW
+      1005 SEATTLE      98115            NW
+      1006 ALBANY       12211            NE
+      1007 AUSTIN       78710       1003 SW
+      1008 CHEYENNE     82003            N
+      1009 BURBANK      91510       1003 W
+      1010 ATLANTA      30314            SE
+      1011 CHICAGO      60606            N
+      1012 BOSTON       02110            NE
+      1013 CLERMONT     34711       1006 SE
+      1014 CODY         82414            N
+      1015 MIAMI        33111            SE
+      1016 BURBANK      91508       1010 W
+      1017 KALMAZOO     49006            N
+      1018 MACON        31206            SE
+      1019 MORRISTOWN   07962       1003 NE
+      1020 TRENTON      08607            NE
+
+20 rows selected.
+
+SQL> truncate table cust_mkt_092009;
+
+Table truncated.
+
+SQL> select *
+  2  from cust_mkt_092009;
+
+no rows selected
+
+SQL> select table_name
+  2  from user_tables
+  3  ;
+
+TABLE_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+CUSTOMERS
+ORDERS
+PUBLISHER
+AUTHOR
+BOOKS
+ORDERITEMS
+BOOKAUTHOR
+PROMOTION
+ACCTMANAGER
+TEST_INVIS
+CUST_MKT_092009
+
+11 rows selected.
+
+SQL> drop table cust_mkt_092009;
+
+Table dropped.
+
+SQL> select table_name
+  2  from user_tables
+  3  ;
+
+TABLE_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+CUSTOMERS
+ORDERS
+PUBLISHER
+AUTHOR
+BOOKS
+ORDERITEMS
+BOOKAUTHOR
+PROMOTION
+ACCTMANAGER
+TEST_INVIS
+
+10 rows selected.
+
+SQL> desc cust_mkt_092009;
+ERROR:
+ORA-04043: object cust_mkt_092009 does not exist
+
+not sure if needed:
+SQL> select object_name, original_name
+  2  from recyclebin;
+
+OBJECT_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+ORIGINAL_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+BIN$DR12auBvTeavqmik/8/MZw==$0
+CUST_MKT_092009
+
+
+SQL> flashback table cust_mkt_092009
+  2  to before drop;
+
+Flashback complete.
+
+SQL> desc cust_mkt_092009;
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ CUSTOMER#                                                                              NUMBER(4)
+ CITY                                                                                   VARCHAR2(12)
+ ZIP                                                                                    VARCHAR2(5)
+ REFERRED                                                                               NUMBER(4)
+ REGION                                                                                 CHAR(2)
+
+SQL> DROP TABLE cust_mkt_092009 PURGE;
+
+Table dropped.
+
+SQL> select object_name, original_name
+  2  from recyclebin;
+
+no rows selected

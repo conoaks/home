@@ -1,0 +1,208 @@
+Conenr Oaks
+assignment 3
+
+Q1  Create a new table containing the category code and 
+description for the categories of books sold by JustLee 
+Books. The table should be called CATEGORY, and the columns 
+should be CatCode and CatDesc. The CatCode column should 
+store a maximum of 2 characters, and the CatDesc column 
+should store a maximum of 10 characters.
+
+SQL> create table CATEGORY
+  2  (CatCode VARCHAR2(2),
+  3   CatDesc VARCHAR2(10));
+
+Table created.
+
+SQL> desc CATEGORY
+ Name                                                       Null?     Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ CATCODE                                             VARCHAR2(2)
+ CATDESC                                             VARCHAR2(10)
+
+Q2 Create a new table containing these four columns: Emp#, 
+Lastname, Firstname, and Job_class. The table name should be 
+EMPLOYEES. The Job_class column should be able to store 
+character strings up to a maximum length of four, but the 
+column values shouldn’t be padded if the value has less than 
+four characters. The Emp# column contains a numeric ID and 
+should allow a five-digit number. Use column sizes you 
+consider suitable for the Firstname and Lastname columns.
+
+SQL> create table EMPLOYEES
+  2  (
+  3  Emp# NUMBER(5),
+  4  LastName VARCHAR2(20),
+  5  FirstName VARCHAR(20),
+  6  Job_Class VARCHAR(4)
+  7  );
+
+Table created.
+
+SQL> desc EMPLOYEES
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ EMP#                                                                                   NUMBER(5)
+ LASTNAME                                                                               VARCHAR2(20)
+ FIRSTNAME                                                                              VARCHAR2(20)
+ JOB_CLASS                                                                              VARCHAR2(4)
+
+Q3 Add two columns to the EMPLOYEES table. One column, named 
+EmpDate, contains the date of employment for each employee, 
+and its default value should be the system date. The second 
+column, named EndDate, contains employees’ date of 
+termination.
+
+SQL> alter table EMPLOYEES
+  2  add (empdate DATE, enddate DATE);
+
+Table altered.
+
+SQL> ALTER TABLE employees
+  2  modify (empdate DATE DEFAULT SYSDATE);
+
+Table altered.
+
+SQL> desc employees
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ EMP#                                                                                   NUMBER(5)
+ LASTNAME                                                                               VARCHAR2(20)
+ FIRSTNAME                                                                              VARCHAR2(20)
+ JOB_CLASS                                                                              VARCHAR2(4)
+ EMPDATE                                                                                DATE
+ ENDDATE                                                                                DATE
+
+Q4 Modify the Job_class column of the EMPLOYEES table so that it 
+allows storing a maximum width of two characters.
+
+SQL> alter table employees
+  2  modify (job_class VARCHAR2(2));
+
+Table altered.
+
+SQL> desc employees
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ EMP#                                                                                   NUMBER(5)
+ LASTNAME                                                                               VARCHAR2(20)
+ FIRSTNAME                                                                              VARCHAR2(20)
+ JOB_CLASS                                                                              VARCHAR2(2)
+ EMPDATE                                                                                DATE
+ ENDDATE                                                                                DATE
+
+
+Q5 Delete the EndDate column from the EMPLOYEES table.
+
+SQL> alter table employees
+  2  drop column enddate;
+
+Table altered.
+
+SQL> desc employees
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ EMP#                                                                                   NUMBER(5)
+ LASTNAME                                                                               VARCHAR2(20)
+ FIRSTNAME                                                                              VARCHAR2(20)
+ JOB_CLASS                                                                              VARCHAR2(2)
+ EMPDATE                                                                                DATE
+
+Q6 Rename the EMPLOYEES table as JL_EMPS.
+
+SQL> RENAME employees TO jl_emps;
+
+Table renamed.
+
+SQL> desc employees;
+ERROR:
+ORA-04043: object employees does not exist
+
+
+SQL> desc jl_emps;
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ EMP#                                                                                   NUMBER(5)
+ LASTNAME                                                                               VARCHAR2(20)
+ FIRSTNAME                                                                              VARCHAR2(20)
+ JOB_CLASS                                                                              VARCHAR2(2)
+ EMPDATE                                                                                DATE
+
+
+Q7 Create a new table containing these four columns from the 
+existing BOOKS table: ISBN, Cost, Retail, and Category. The 
+name of the ISBN column should be ID, and the other columns 
+should keep their original names. Name the new table 
+BOOK_PRICING.
+
+SQL> create table book_pricing
+  2  as(SELECT ISBN as ID, cost, retail, category
+  3  from books);
+
+Table created.
+
+SQL> desc book_pricing
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ ID                                                                                     VARCHAR2(10)
+ COST                                                                                   NUMBER(5,2)
+ RETAIL                                                                                 NUMBER(5,2)
+ CATEGORY                                                                               VARCHAR2(12)
+
+
+Q8 Mark the Category column of the BOOK_PRICING table as unused. 
+Verify that the column is no longer available.
+
+SQL> alter table book_pricing
+  2  set unused(category);
+
+Table altered.
+
+SQL> desc book_pricing;
+ Name                                                                          Null?    Type
+ ----------------------------------------------------------------------------- -------- ----------------------------------------------------
+ ID                                                                                     VARCHAR2(10)
+ COST                                                                                   NUMBER(5,2)
+ RETAIL                                                                                 NUMBER(5,2)
+
+
+Q9 Truncate the BOOK_PRICING table, and then verify that the 
+table still exists but no longer contains any data.
+
+SQL> truncate table book_pricing;
+
+Table truncated.
+
+SQL> select *
+  2  from book_pricing;
+
+no rows selected
+
+
+Q10 Delete the BOOK_PRICING table permanently so that it isn’t 
+moved to the recycle bin. Delete the JL_EMPS table so that it 
+can be restored. Restore the JL_EMPS table and verify that 
+it’s available again.
+
+SQL> drop table book_pricing purge;
+
+Table dropped.
+
+SQL> drop table jl_emps;
+
+Table dropped.
+
+SQL> select object_name, original_name
+  2  from recyclebin;
+
+OBJECT_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+ORIGINAL_NAME
+--------------------------------------------------------------------------------------------------------------------------------
+BIN$5Q41mnxYS+u9hYg4I5/hrg==$0
+JL_EMPS
+
+SQL> flashback table jl_emps
+  2  to before drop;
+
+Flashback complete.

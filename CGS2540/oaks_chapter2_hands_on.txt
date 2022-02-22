@@ -1,0 +1,259 @@
+Conner Oaks
+assignment 1
+
+
+1. Display a list of all data contained in the BOOKS table.
+SQL> select *
+  2  from books;
+
+ISBN       TITLE                          PUBDATE        PUBID       COST     RETAIL   DISCOUNT CATEGORY
+---------- ------------------------------ --------- ---------- ---------- ---------- ---------- ------------
+1059831198 BODYBUILD IN 10 MINUTES A DAY  21-JAN-05          4      18.75      30.95            FITNESS
+0401140733 REVENGE OF MICKEY              14-DEC-05          1       14.2         22            FAMILY LIFE
+4981341710 BUILDING A CAR WITH TOOTHPICKS 18-MAR-06          2       37.8      59.95          3 CHILDREN
+8843172113 DATABASE IMPLEMENTATION        04-JUN-03          3       31.4      55.95            COMPUTER
+3437212490 COOKING WITH MUSHROOMS         28-FEB-04          4       12.5      19.95            COOKING
+3957136468 HOLY GRAIL OF ORACLE           31-DEC-05          3      47.25      75.95        3.8 COMPUTER
+1915762492 HANDCRANKED COMPUTERS          21-JAN-05          3       21.8         25            COMPUTER
+9959789321 E-BUSINESS THE EASY WAY        01-MAR-06          2       37.9       54.5            COMPUTER
+2491748320 PAINLESS CHILD-REARING         17-JUL-04          5         48      89.95        4.5 FAMILY LIFE
+0299282519 THE WOK WAY TO COOK            11-SEP-04          4         19      28.75            COOKING
+8117949391 BIG BEAR AND LITTLE DOVE       08-NOV-05          5       5.32       8.95            CHILDREN
+0132149871 HOW TO GET FASTER PIZZA        11-NOV-06          4      17.85      29.95        1.5 SELF HELP
+9247381001 HOW TO MANAGE THE MANAGER      09-MAY-03          1       15.4      31.95            BUSINESS
+2147428890 SHORTEST POEMS                 01-MAY-05          5      21.85      39.95            LITERATURE
+
+14 rows selected.
+
+
+2. List the title only of all books available in inventory, using the BOOKS table.
+SQL> select title
+  2  from books;
+
+TITLE
+------------------------------
+BODYBUILD IN 10 MINUTES A DAY
+REVENGE OF MICKEY
+BUILDING A CAR WITH TOOTHPICKS
+DATABASE IMPLEMENTATION
+COOKING WITH MUSHROOMS
+HOLY GRAIL OF ORACLE
+HANDCRANKED COMPUTERS
+E-BUSINESS THE EASY WAY
+PAINLESS CHILD-REARING
+THE WOK WAY TO COOK
+BIG BEAR AND LITTLE DOVE
+HOW TO GET FASTER PIZZA
+HOW TO MANAGE THE MANAGER
+SHORTEST POEMS
+
+14 rows selected.
+
+
+3. List the title and publication date for each book in the BOOKS table. Use the column heading “Publication Date” for the Pubdate field.
+SQL> select title, pubdate as "Publication Date"
+  2  from books;
+
+TITLE                          Publicatication Date
+------------------------------ ---------
+BODYBUILD IN 10 MINUTES A DAY  21-JAN-05
+REVENGE OF MICKEY              14-DEC-05
+BUILDING A CAR WITH TOOTHPICKS 18-MAR-06
+DATABASE IMPLEMENTATION        04-JUN-03
+COOKING WITH MUSHROOMS         28-FEB-04
+HOLY GRAIL OF ORACLE           31-DEC-05
+HANDCRANKED COMPUTERS          21-JAN-05
+E-BUSINESS THE EASY WAY        01-MAR-06
+PAINLESS CHILD-REARING         17-JUL-04
+THE WOK WAY TO COOK            11-SEP-04
+BIG BEAR AND LITTLE DOVE       08-NOV-05
+HOW TO GET FASTER PIZZA        11-NOV-06
+HOW TO MANAGE THE MANAGER      09-MAY-03
+SHORTEST POEMS                 01-MAY-05
+
+14 rows selected.
+
+
+4. List the customer number for each customer in the CUSTOMERS table, along with the city and state in which the customer lives.
+SQL> select customer#, city, state
+  2  from customers;
+
+ CUSTOMER# CITY         ST
+---------- ------------ --
+      1001 EASTPOINT    FL
+      1002 SANTA MONICA CA
+      1003 TALLAHASSEE  FL
+      1004 BOISE        ID
+      1005 SEATTLE      WA
+      1006 ALBANY       NY
+      1007 AUSTIN       TX
+      1008 CHEYENNE     WY
+      1009 BURBANK      CA
+      1010 ATLANTA      GA
+      1011 CHICAGO      IL
+      1012 BOSTON       MA
+      1013 CLERMONT     FL
+      1014 CODY         WY
+      1015 MIAMI        FL
+      1016 BURBANK      CA
+      1017 KALMAZOO     MI
+      1018 MACON        GA
+      1019 MORRISTOWN   NJ
+      1020 TRENTON      NJ
+
+20 rows selected.
+
+
+5.Create a list containing the publisher’s name, the person usually contacted, 
+and the publisher’s telephone number. Rename the contact column “Contact Person” in the displayed results. (Hint: Use the PUBLISHER table.)
+SQL> select name, contact as"Contact Person", phone
+  2  from publisher;
+
+NAME                    Contact Person  PHONE
+----------------------- --------------- ------------
+PRINTING IS US          TOMMIE SEYMOUR  000-714-8321
+PUBLISH OUR WAY         JANE TOMLIN     010-410-0010
+AMERICAN PUBLISHING     DAVID DAVIDSON  800-555-1211
+READING MATERIALS INC.  RENEE SMITH     800-555-9743
+REED-N-RITE             SEBASTIAN JONES 800-555-8284
+
+
+6. Determine which categories are represented in the current book inventory. List each category only once.
+SQL> select unique category
+  2  from books;
+
+CATEGORY
+------------
+FITNESS
+FAMILY LIFE
+CHILDREN
+COMPUTER
+COOKING
+SELF HELP
+BUSINESS
+LITERATURE
+
+8 rows selected.
+
+7. List the customer number from the ORDERS table for each customer who has placed an order with the bookstore. List each customer number only once.
+SQL> select unique order#
+  2  from orderitems;
+
+    ORDER#
+----------
+      1000
+      1001
+      1002
+      1003
+      1004
+      1005
+      1006
+      1007
+      1008
+      1009
+      1010
+      1011
+      1012
+      1013
+      1014
+      1015
+      1016
+      1017
+      1018
+      1019
+      1020
+
+21 rows selected.
+
+
+8.Create a list of each book title stored in the BOOKS table and the category in which each book belongs.
+ Reverse the sequence of the columns so that the category of each book is listed first.
+ SQL> select category, title
+  2  from books;
+
+CATEGORY     TITLE
+------------ ------------------------------
+FITNESS      BODYBUILD IN 10 MINUTES A DAY
+FAMILY LIFE  REVENGE OF MICKEY
+CHILDREN     BUILDING A CAR WITH TOOTHPICKS
+COMPUTER     DATABASE IMPLEMENTATION
+COOKING      COOKING WITH MUSHROOMS
+COMPUTER     HOLY GRAIL OF ORACLE
+COMPUTER     HANDCRANKED COMPUTERS
+COMPUTER     E-BUSINESS THE EASY WAY
+FAMILY LIFE  PAINLESS CHILD-REARING
+COOKING      THE WOK WAY TO COOK
+CHILDREN     BIG BEAR AND LITTLE DOVE
+SELF HELP    HOW TO GET FASTER PIZZA
+BUSINESS     HOW TO MANAGE THE MANAGER
+LITERATURE   SHORTEST POEMS
+
+14 rows selected.
+
+
+9.Create a list of authors that displays the last name followed by the first name for each author. 
+The last names and first names should be separated by a comma and a blank space.
+SQL> select lname||', '||fname as "Authors"
+  2  from author;
+
+Authors
+----------------------
+SMITH, SAM
+JONES, JANICE
+AUSTIN, JAMES
+MARTINEZ, SHEILA
+KZOCHSKY, TAMARA
+PORTER, LISA
+ADAMS, JUAN
+BAKER, JACK
+PETERSON, TINA
+WHITE, WILLIAM
+WHITE, LISA
+ROBINSON, ROBERT
+FIELDS, OSCAR
+WILKINSON, ANTHONY
+
+14 rows selected.
+
+
+10.List all information for each order item. Include an item total, which can be calculated by multiplying the Quantity and Paideach columns. 
+Use a column alias for the calculated value to show the heading “Item Total” in the output.
+SQL> select order# "Order Number", item# "Item Number", isbn, quantity, paideach, quantity*paideach "Item Total"
+  2  from orderitems;
+
+Order Number Item Number ISBN         QUANTITY   PAIDEACH Item Total
+------------ ----------- ---------- ---------- ---------- ----------
+        1000           1 3437212490          1      19.95      19.95
+        1001           1 9247381001          1      31.95      31.95
+        1001           2 2491748320          1      85.45      85.45
+        1002           1 8843172113          2      55.95      111.9
+        1003           1 8843172113          1      55.95      55.95
+        1003           2 1059831198          1      30.95      30.95
+        1003           3 3437212490          1      19.95      19.95
+        1004           1 2491748320          2      85.45      170.9
+        1005           1 2147428890          1      39.95      39.95
+        1006           1 9959789321          1       54.5       54.5
+        1007           1 3957136468          3      72.15     216.45
+        1007           2 9959789321          1       54.5       54.5
+        1007           3 8117949391          1       8.95       8.95
+        1007           4 8843172113          1      55.95      55.95
+        1008           1 3437212490          2      19.95       39.9
+        1009           1 3437212490          1      19.95      19.95
+        1009           2 0401140733          1         22         22
+        1010           1 8843172113          1      55.95      55.95
+        1011           1 2491748320          1      85.45      85.45
+        1012           1 8117949391          1       8.95       8.95
+        1012           2 1915762492          2         25         50
+        1012           3 2491748320          1      85.45      85.45
+        1012           4 0401140733          1         22         22
+        1013           1 8843172113          1      55.95      55.95
+        1014           1 0401140733          2         22         44
+        1015           1 3437212490          1      19.95      19.95
+        1016           1 2491748320          1      85.45      85.45
+        1017           1 8117949391          2       8.95       17.9
+        1018           1 3437212490          1      19.95      19.95
+        1018           2 8843172113          1      55.95      55.95
+        1019           1 0401140733          1         22         22
+        1020           1 3437212490          1      19.95      19.95
+
+32 rows selected.
