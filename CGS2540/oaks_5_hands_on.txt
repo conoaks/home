@@ -1,0 +1,105 @@
+Conner Oaks
+module 5 hands on 
+1. Add a new row in the ORDERS table with the following data: 
+Order# = 1021, Customer# = 1009, and Order date = July 20, 2009
+
+SQL> insert into orders (order#, customer#, orderdate)
+  2  values (1021, 1009, '20-JUL-09');
+
+1 row created.
+
+2. Modify the zip code on order 1017 to 33222.
+
+SQL> update orders
+  2  set shipzip = '33222'
+  3  where order# = 1017;
+
+1 row updated.
+
+3. Save the changes permanently to the database.
+
+SQL> commit;
+
+Commit complete.
+
+4. Add a new row in the ORDERS table with the following data: 
+Order# = 1022, Customer# = 2000, and Order date = August 6, 
+2009. Describe the error raised and what caused the error
+
+SQL> insert into orders(order#, customer#, orderdate)
+  2  values (1022, 2000, 'August 6, 2009');
+values (1022, 2000, 'August 6, 2009')
+                    *
+ERROR at line 2:
+ORA-01858: a non-numeric character was found where a numeric was expected
+
+ if this is the error spoken of it is due to the date format; as the DATE contraint on the order date field 
+ doesnt allow dates to be inputted like this and instead must be put in as 06-AUG-09
+
+SQL> insert into orders(order#, customer#, orderdate)
+  2  values (1022, 2000, '06-AUG-09');
+insert into orders(order#, customer#, orderdate)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (C##STUDENT5.ORDERS_CUSTOMER#_FK) violated - parent key not found
+
+if this one it is because there is already the customer number listed in the database and it will not allow a duplicate;
+
+5. Add a new row in the ORDERS table with the following data: 
+Order# = 1023 and Customer# = 1009. Describe the error raised 
+and what caused the error.
+
+SQL> insert into orders(order#, customer#)
+  2  values (1023, 1009)
+  3  ;
+insert into orders(order#, customer#)
+*
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("C##STUDENT5"."ORDERS"."ORDERDATE")
+
+date has been left null
+
+6. Create a script using substitution variables that allows a user 
+to set a new cost amount for a book based on the ISBN.
+
+SQL> update books
+  2  set cost = '&Cost'
+  3  where isbn = '&ISBN';
+
+7. Execute the script and set the following values: isbn = 
+1059831198 and cost = $20.00
+
+SQL> update books
+  2  set cost = '&Cost'
+  3  where isbn = '&ISBN';
+Enter value for cost: 20.00
+old   2: set cost = '&Cost'
+new   2: set cost = '20.00'
+Enter value for isbn: 1059831198
+old   3: where isbn = '&ISBN'
+new   3: where isbn = '1059831198'
+
+1 row updated.
+
+8. Execute a command that undoes the change in Step 7.
+
+SQL> rollback;
+
+Rollback complete.
+
+9. Delete Order# 1005. You need to address both the master order 
+record and the related detail records.
+
+SQL> delete from orderitems
+  2  where order# = 1005;
+
+1 row deleted.
+
+SQL> delete from orders
+  2  where order# = 1005;
+
+1 row deleted.
+
+10. SQL> rollback;
+
+Rollback complete.
