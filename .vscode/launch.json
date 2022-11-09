@@ -3,6 +3,41 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch SchoolProjects",
+      "request": "launch",
+      "mainClass": "schoolprojects.java.SchoolProjects",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "Launch HW6_2",
+      "request": "launch",
+      "mainClass": "SchoolProjects.java.HW6_2",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "Launch HW4_2",
+      "request": "launch",
+      "mainClass": "SchoolProjects.java.HW4_2",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "Launch HW3_1",
+      "request": "launch",
+      "mainClass": "SchoolProjects.java.HW3_1",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "Launch HW9_2",
+      "request": "launch",
+      "mainClass": "schoolprojects.java.HW9_2",
+      "projectName": ""
+    },
+    {
+      "type": "java",
       "name": "Launch hw2_2",
       "request": "launch",
       "mainClass": "SchoolProjects.java.hw2_2",
