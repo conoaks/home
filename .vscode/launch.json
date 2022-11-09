@@ -3,6 +3,27 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch HW3_2",
+      "request": "launch",
+      "mainClass": "schoolprojects.java.HW3_2",
+      "projectName": "home_4e43b9c1"
+    },
+    {
+      "type": "java",
+      "name": "Launch HW9_2",
+      "request": "launch",
+      "mainClass": "HW9_2",
+      "projectName": "home_4e43b9c1"
+    },
+    {
+      "type": "java",
+      "name": "Launch SchoolProjects",
+      "request": "launch",
+      "mainClass": "SchoolProjects",
+      "projectName": "home_4e43b9c1"
+    },
+    {
+      "type": "java",
       "name": "Launch SchoolProjects",
       "request": "launch",
       "mainClass": "COP2800.SchoolProjects",
