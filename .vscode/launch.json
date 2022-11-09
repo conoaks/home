@@ -5,6 +5,13 @@
       "type": "java",
       "name": "Launch SchoolProjects",
       "request": "launch",
+      "mainClass": "COP2800.SchoolProjects",
+      "projectName": "home_4e43b9c1"
+    },
+    {
+      "type": "java",
+      "name": "Launch SchoolProjects",
+      "request": "launch",
       "mainClass": "schoolprojects.java.SchoolProjects",
       "projectName": ""
     },
