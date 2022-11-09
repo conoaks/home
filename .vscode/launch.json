@@ -3,6 +3,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch hw2_2",
+      "request": "launch",
+      "mainClass": "SchoolProjects.java.hw2_2",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "Launch hw2_2",
+      "request": "launch",
+      "mainClass": "COP2800.hw2_2",
+      "projectName": "home_4e43b9c1"
+    },
+    {
+      "type": "java",
       "name": "Launch HW8_2",
       "request": "launch",
       "mainClass": "schoolprojects.java.HW8_2",
