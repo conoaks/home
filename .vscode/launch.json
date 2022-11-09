@@ -2,6 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "Launch HW8_2",
+      "request": "launch",
+      "mainClass": "schoolprojects.java.HW8_2",
+      "projectName": ""
+    },
+    {
       "name": "(gdb) Launch",
       "type": "cppdbg",
       "request": "launch",
