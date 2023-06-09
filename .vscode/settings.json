@@ -20,5 +20,7 @@
   "C_Cpp_Runner.excludeSearch": [],
   "C_Cpp_Runner.enableWarnings": true,
   "C_Cpp_Runner.warningsAsError": false,
-  "java.project.sourcePaths": []
+  "java.project.sourcePaths": [],
+  "editor.tabCompletion": "on",
+  "diffEditor.codeLens": true
 }
