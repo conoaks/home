@@ -31,34 +31,8 @@
 		},
 		{
 			"type": "shell",
-			"label": "Run Java",
-			"command": "java",
-			"args": [
-				"${fileBasenameNoExtension}"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
-		},
-		{
-			"type": "shell",
 			"label": "Run C++",
 			"command": "g++",
-			"args": [
-				"${file}",
-				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}.exe"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
-		},
-		{
-			"type": "shell",
-			"label": "Run C",
-			"command": "gcc",
 			"args": [
 				"${file}",
 				"-o",
