@@ -1,130 +1,30 @@
 {
   "version": "0.2.0",
   "configurations": [
+    
     {
       "type": "java",
-      "name": "Launch HW3_2",
+      "name": "Launch Java Program",
       "request": "launch",
-      "mainClass": "schoolprojects.java.HW3_2",
-      "projectName": "home_4e43b9c1"
+      "mainClass": ""
     },
+    
     {
-      "type": "java",
-      "name": "Launch HW9_2",
-      "request": "launch",
-      "mainClass": "HW9_2",
-      "projectName": "home_4e43b9c1"
+      "type": "expo",
+      "request": "attach",
+      "name": "Debug Expo app",
+      "projectRoot": "${workspaceFolder}",
+      "bundlerPort": "19000",
+      "bundlerHost": "127.0.0.1"
     },
+
     {
-      "type": "java",
-      "name": "Launch SchoolProjects",
+      "name": "Python: Current File",
+      "type": "python",
       "request": "launch",
-      "mainClass": "SchoolProjects",
-      "projectName": "home_4e43b9c1"
-    },
-    {
-      "type": "java",
-      "name": "Launch SchoolProjects",
-      "request": "launch",
-      "mainClass": "COP2800.SchoolProjects",
-      "projectName": "home_4e43b9c1"
-    },
-    {
-      "type": "java",
-      "name": "Launch SchoolProjects",
-      "request": "launch",
-      "mainClass": "schoolprojects.java.SchoolProjects",
-      "projectName": ""
-    },
-    {
-      "type": "java",
-      "name": "Launch HW6_2",
-      "request": "launch",
-      "mainClass": "SchoolProjects.java.HW6_2",
-      "projectName": ""
-    },
-    {
-      "type": "java",
-      "name": "Launch HW4_2",
-      "request": "launch",
-      "mainClass": "SchoolProjects.java.HW4_2",
-      "projectName": ""
-    },
-    {
-      "type": "java",
-      "name": "Launch HW3_1",
-      "request": "launch",
-      "mainClass": "SchoolProjects.java.HW3_1",
-      "projectName": ""
-    },
-    {
-      "type": "java",
-      "name": "Launch HW9_2",
-      "request": "launch",
-      "mainClass": "schoolprojects.java.HW9_2",
-      "projectName": ""
-    },
-    {
-      "type": "java",
-      "name": "Launch hw2_2",
-      "request": "launch",
-      "mainClass": "SchoolProjects.java.hw2_2",
-      "projectName": ""
-    },
-    {
-      "type": "java",
-      "name": "Launch hw2_2",
-      "request": "launch",
-      "mainClass": "COP2800.hw2_2",
-      "projectName": "home_4e43b9c1"
-    },
-    {
-      "type": "java",
-      "name": "Launch HW8_2",
-      "request": "launch",
-      "mainClass": "schoolprojects.java.HW8_2",
-      "projectName": ""
-    },
-    {
-      "name": "(gdb) Launch",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "F:\\Tools\\GithubRepo\\home\\COP2221\\",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${fileDirname}",
-      "environment": [],
-      "externalConsole": false,
-      "MIMode": "gdb",
-      "miDebuggerPath": "C:\\msys64\\mingw64\\bin\\gdb.exe",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
-    },
-    {
-      "name": "C/C++ Runner: Debug Session",
-      "type": "cppdbg",
-      "request": "launch",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "f:\\Tools\\GithubRepo\\home",
-      "environment": [],
-      "program": "f:\\Tools\\GithubRepo\\home\\build\\Debug\\outDebug",
-      "internalConsoleOptions": "openOnSessionStart",
-      "MIMode": "gdb",
-      "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
-      "externalConsole": false,
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": false
     }
   ]
 }
