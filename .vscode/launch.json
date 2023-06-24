@@ -1,6 +1,7 @@
 {
   "version": "0.2.0",
   "configurations": [
+    
     {
       "type": "java",
       "name": "Launch Java Program",
@@ -16,6 +17,22 @@
       "bundlerPort": "19000",
       "bundlerHost": "127.0.0.1"
     },
+    {
+      "name": "Python: Attach",
+      "type": "python",
+      "request": "attach",
+      "connect": {
+        "host": "localhost",
+        "port": 5678
+      },
+      "pathMappings": [
+        {
+          "localRoot": "${workspaceFolder}",
+          "remoteRoot": "."
+        }
+      ]
+    },
+
 
     {
       "name": "Python: Current File",
