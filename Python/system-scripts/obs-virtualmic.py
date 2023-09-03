@@ -1,2 +1,3 @@
-import subprocess
-subprocess.run(["virtualmic up" , "--channel obs"])
+import os
+
+os.system("virtualmic up --channel obs")
