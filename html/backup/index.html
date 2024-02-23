@@ -2,135 +2,64 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=100vw, initial-scale=1.0" />
-    <title>Conner Oaks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preview</title>
     <script src="https://cdn.tailwindcss.com"></script>
-      <!--Script for screen size fix-->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-      $(document).ready(function() {
-          var windowWidth = $(window).width();
-          var maxDeviceWidth = 725; // Set your desired threshold (e.g., 768 pixels for tablets)
-          
-          if (windowWidth > maxDeviceWidth) {
-            $('#desktop-container').show(); $('#mobile-container').hide();
-          } else {
-            $('#mobile-container').show(); $('#desktop-container').hide();
-          }
-      });
-  </script>
     <style>
       html, body {
         display: flex;
         flex-direction: column;
         flex: 1;
         width: 100%;
-        height:100dvh;
+        height: 100%;
+        resize: both; /* Allows resizing in all directions */
+        overflow: auto; /* Handles scrollbars if needed */
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        cursor: default; color: black; text-decoration:none;
-        font-size: calc(5pt + .5vw)
-      }
-      .footer{
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: rgb(255, 255, 255);
-        color: white;
-        text-align: center;
+        
       }
     </style>
   </head>
   <body>
-    <!--Desktop Page-->
-    <div id="desktop-container" class="flex flex-col justify-start items-center gap-[1.5vmin] bg-white">
-    <!--Top Section-->
-      <div
-        class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[6.25vw] pt-.5vw pb-[3.9vw]"
-      >
-        <!--Header Bar-->
-        <div
-          class="flex justify-between items-center self-stretch flex-grow-0 flex-shrink-0 px-5 py-8"
-        >
-        <!--Name, top left-->
-          <div
-            class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[.6vw]"
-          >
-            <div
-              class="flex-grow-0 flex-shrink-0 w-[1.9vw] h-[1.9vw] relative overflow-hidden bg-[url(&#x27;logo/favicon.png&#x27;)] bg-cover bg-no-repeat bg-center"
-            ></div>
-            <p class="flex-grow-0 flex-shrink-0 text-2xl font-semibold text-center text-[#121314]">
-              Conner
-            </p>
+    <div class="flex flex-col justify-start items-center h-[142.55vh] gap-[1.82vw] bg-white">
+      <div class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[12vw] pt-10 pb-[3.91vh]">
+        <div class="flex justify-between items-center self-stretch flex-grow-0 flex-shrink-0 px-[0.26vw] py-[0.42vh]">
+          <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[11px]">
+            <div class="flex-grow-0 flex-shrink-0 w-[2.19vw] h-[2.19vw] relative overflow-hidden bg-[url('logo/favicon.png')] bg-cover bg-no-repeat bg-center"></div>
+            <p class="text-2xl font-semibold text-center text-[#121314]">Conner</p>
           </div>
-          <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-8">
-            <p class="flex-grow-0 flex-shrink-0 text-lg font-bold text-center text-[#121314]">
-              Home
-            </p>
-            <p class="flex-grow-0 flex-shrink-0 text-lg text-center text-[#7b848b]">Experience</p>
-            <p class="flex-grow-0 flex-shrink-0 text-lg text-center text-[#7b848b]">Contact</p>
-            <div
-              class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-2 px-6 rounded bg-gradient-to-r from-[#9249f2]/[0.12] to-[#ff5f49]/[0.12]"
-            >
-              <p class="flex-grow-0 flex-shrink-0 text-lg font-medium text-center text-[#121314]">
-                <a href="mailto:conoaks@gmail.com">conoaks@gmail.com</a> 
-              </p>
+          <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[0.42vw]">
+            <p class="text-lg font-bold text-center text-[#121314]">Home</p>
+            <p class="text-lg text-center text-[#7b848b]">About</p>
+            <p class="text-lg text-center text-[#7b848b]">Work</p>
+            <p class="text-lg text-center text-[#7b848b]">Contact</p>
+            <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[0.1vw] px-[0.31vw] rounded bg-gradient-to-r from-[#9249f2]/[0.12] to-[#ff5f49]/[0.12]">
+              <p class="text-lg font-medium text-center text-[#121314]">conoaks@gmail.com</p>
             </div>
           </div>
+        </div>       
+      <div class="flex justify-start items-center gap-[9.583333333333334vw]">
+        <img src="rectangle-34.png" class="w-[27.916666666666668vw] h-[27.916666666666668vw] rounded-2xl object-fill" />
+        <div class="flex flex-col justify-start items-start gap-[0.4166666666666667vw]">
+          <div class="flex flex-col justify-start items-start gap-[6vw]">
+            <p class="w-[33.75vw] text-[4.166666666666667vw] font-semibold text-left text-[#121314]">
+              <span class="w-[33.75vw] text-[4.166666666666667vw] font-semibold text-left text-[#121314]">Hello, I’m</span><br />
+              <span class="w-[33.75vw] text-[4.166666666666667vw] font-semibold text-left text-[#121314]">Conner Oaks.</span>
+            </p>
+          </div>
+      <p class="flex-grow-0 flex-shrink-0 w-[33.75vw] text-[1.2vw] text-left text-[#485057]">
+        I’m a current Florida State University student majoring in Information Technology. I have a background in 3D printing, CAD modeling, Photo Editing, Networking, Coding, and Basic Manufacturing.
+      </p>
+      <div class="flex justify-start items-start flex-grow-0 flex-shrink-0 gap-[0.4166666666666667vw]">
+        <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[0.1vw] px-[0.31vw] rounded bg-[#1777e5]">
+          <p class="text-lg font-semibold text-center capitalize text-white">Say Hello</p>
         </div>
-        <!--Big Image & Text-->
-        <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7vw]">
-          <img
-            src="rectangle-34.png"
-            class="flex-grow-0 flex-shrink-0 w-[28vw] h-[28vw] rounded-2xl object-fill"
-          />
-          <div
-            class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-8"
-          >
-            <div
-              class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-6"
-            >
-              <p
-                class="flex-grow-0 flex-shrink-0 w-[34vw] text-[4vw] font-semibold text-left text-[#121314]"
-              >
-              <!--Hey, I'm Conner-->
-                <span
-                  class="flex-grow-0 flex-shrink-0 w-[34vw] text-[4vw] font-semibold text-left text-[#121314]"
-                  >Hello, I’m</span
-                ><br /><span
-                  class="flex-grow-0 flex-shrink-0 w-[34vw] text-[4vw] font-semibold text-left text-[#121314]"
-                  >Conner Oaks.</span
-                >
-              </p>
-            </div>
-            <!--Top Paragraph
-            <p class="flex-grow-0 flex-shrink-0 w-[38vw] text-[1.2vw] text-left text-[#485057]">
-              
-            </p>
-          -->
-            <div class="flex justify-start items-start flex-grow-0 flex-shrink-0 gap-4">
-              <div
-                class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 px-8 rounded bg-[#1777e5]"
-              >
-                <p
-                  class="flex-grow-0 flex-shrink-0 text-lg font-semibold text-center capitalize text-white"
-                >
-                <a href="mailto:conoaks@gmail.com">Say Hello</a>
-                </p>
-              </div>
-              <div
-                class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 px-8 rounded bg-[#f5f6f7]"
-              >
-                <p
-                  class="flex-grow-0 flex-shrink-0 text-lg font-semibold text-center capitalize text-[#121314]"
-                >
-                  View Portfolio
-                </p>
+        <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[0.1vw] px-[0.31vw] rounded bg-[#f5f6f7]">
+          <p class="text-lg font-semibold text-center capitalize text-[#121314]">View Portfolio</p>
                 <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
+                  width="1.25vw"
+                  height="1.25vw"
+                  viewBox="0 0 1.25vw 1.25vw"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   class="flex-grow-0 flex-shrink-0 w-6 h-6 relative"
@@ -139,14 +68,14 @@
                   <path
                     d="M6 18L18 6"
                     stroke="#121314"
-                    stroke-width="2"
+                    stroke-width=".1vw"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   ></path>
                   <path
                     d="M8.25 6H18V15.75"
                     stroke="#121314"
-                    stroke-width="2"
+                    stroke-width=".1vw"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   ></path>
@@ -156,38 +85,21 @@
           </div>
         </div>
       </div>
-    <!--Jack of all Trades-->
-      <div
-        class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 overflow-hidden gap-20 px-[15vw]"
-      >
-        <div
-          class="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[90vw] relative gap-10 p-14 rounded-2xl bg-white border border-[#818181]/[0.85]"
-          style="box-shadow: 0vw 2.5vw 7.7vw 0 rgba(18,19,20,0.08);"
-        >
-          <img class="flex-grow-0 flex-shrink-0 w-[clamp10vw] h-[10vw]" src="image.png" />
-          <div class="flex flex-col justify-start items-start flex-grow relative gap-5 w-[1vw]">
-            <p
-              class="self-stretch flex-grow-0 flex-shrink-0 w-[35vw] text-[2vw] font-semibold text-left text-[#121314]"
-            >
-              A Jack of all Trades
-            </p>
-            <p
-              class="self-stretch flex-grow-0 flex-shrink-0 w-[35vw] text-xl text-left text-[#485057]"
-            >
-            <!--Put the intro here-->
-            I’m an Information Technology major at FSU who has become a Jack of all Trades. My “toolbox” includes networking, coding, basic manufacturing, photo editing, 3D printing, and CAD modeling, and it is ever expanding as I continue to tinker and learn more. 
-            </p>
-          </div>
-          <div
-            class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 w-[clamp(260px, 15vw, 1920px)] gap-4"
-          >
-            <div
-              class="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-3 px-.4vw rounded bg-[#f5f6f7]"
-            >
+      <div class="flex justify-start items-center gap-[9.58vw]">
+        <img src="image.png" class="flex-grow-0 flex-shrink-0 w-[27.92vw] h-[27.92vh] rounded-2xl object-none" />
+        <div class="flex flex-col justify-start items-start flex-grow relative gap-[1.04vw]">
+          <p class="self-stretch flex-grow-0 flex-shrink-0 w-[33.75vw] text-[1.7vw] font-semibold text-left text-[#121314]">
+            A Jack of all Trades
+          </p>
+          <p class="self-stretch flex-grow-0 flex-shrink-0 w-[33.75vw] text-[1.2vw] text-left text-[#485057]">
+            A driven IT enthusiast with a love of 3D modeling, coding, and networking. From stocking grocery shelves to leading the Frozen Food Department, I’ve honed my organizational prowess. Armed with certifications in Adobe tools and Autodesk Inventor, I’m ready to innovate and create. Let’s turn bits into brilliance!
+          </p>
+        </div>
+        <div class="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-[0.1vw] px-[0.31vw] rounded bg-[#f5f6f7]">
               <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
+                width="1.25vw"
+                height="1.25vw"
+                viewBox="0 0 1.25vw 1.25vw"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 class="flex-grow-0 flex-shrink-0 w-6 h-6 relative"
@@ -224,21 +136,21 @@
               <p
                 class="flex-grow-0 flex-shrink-0 text-lg font-semibold text-center capitalize text-[#121314]"
               >
-              <a href="Resume/resume-updated.pdf" download="coaks-resume">Download Resume</a>
+                Download Resume
               </p>
             </div>
           </div>
         </div>
         <div
-          class="flex justify-start items-start flex-grow-0 flex-shrink-0 w-[70vw] h-[clamp(700px, 60vh, 1000px)] relative gap-6"
+          class="flex justify-start items-start flex-grow-0 flex-shrink-0 w-[1343px] h-[673px] relative gap-6"
         >
           <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-9">
             <div
-              class="flex justify-center items-center flex-grow-0 flex-shrink-0 w-[22vw] relative gap-4"
+              class="flex justify-center items-center flex-grow-0 flex-shrink-0 w-[424px] relative gap-4"
             >
               <div class="flex-grow-0 flex-shrink-0 w-8 h-0.5 bg-[#1777e5]"></div>
               <p
-                class="flex-grow w-[20vw] text-lg font-semibold text-left uppercase text-[#1777e5]"
+                class="flex-grow w-[376px] text-lg font-semibold text-left uppercase text-[#1777e5]"
               >
                 Education
               </p>
@@ -257,12 +169,12 @@
                   </p>
                 </div>
                 <p
-                  class="flex-grow-0 flex-shrink-0 w-[22vw] text-xl font-semibold text-left text-[#121314]"
+                  class="flex-grow-0 flex-shrink-0 w-[424px] text-xl font-semibold text-left text-[#121314]"
                 >
                   Florida State University (FSU)
                 </p>
               </div>
-              <p class="flex-grow-0 flex-shrink-0 w-[19vw] text-base text-left text-[#5e6971]">
+              <p class="flex-grow-0 flex-shrink-0 w-[356px] text-base text-left text-[#5e6971]">
                 Bachelors Degree in Information Technology
               </p>
             </div>
@@ -280,22 +192,22 @@
                   </p>
                 </div>
                 <p
-                  class="flex-grow-0 flex-shrink-0 w-[22vw] text-xl font-semibold text-left text-[#121314]"
+                  class="flex-grow-0 flex-shrink-0 w-[424px] text-xl font-semibold text-left text-[#121314]"
                 >
                   Tallahassee Community College (TCC)
                 </p>
               </div>
-              <p class="flex-grow-0 flex-shrink-0 w-[19vw] text-base text-left text-[#5e6971]">
+              <p class="flex-grow-0 flex-shrink-0 w-[356px] text-base text-left text-[#5e6971]">
                 Associates Degree for transfer to FSU
               </p>
             </div>
             <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-9">
               <div
-                class="flex justify-center items-center flex-grow-0 flex-shrink-0 w-[22vw] relative gap-4"
+                class="flex justify-center items-center flex-grow-0 flex-shrink-0 w-[424px] relative gap-4"
               >
                 <div class="flex-grow-0 flex-shrink-0 w-8 h-0.5 bg-[#2db24a]"></div>
                 <p
-                  class="flex-grow w-[20vw] text-lg font-semibold text-left uppercase text-[#2db24a]"
+                  class="flex-grow w-[376px] text-lg font-semibold text-left uppercase text-[#2db24a]"
                 >
                   Tools i USE
                 </p>
@@ -404,19 +316,19 @@
               </div>
             </div>
           </div>
-          <div class="flex-grow-0 flex-shrink-0 w-[46vw] h-[35vw] relative">
+          <div class="flex-grow-0 flex-shrink-0 w-[895px] h-[673px] relative">
             <div
-              class="flex justify-center items-center w-[46vw] absolute left-[11px] top-0 gap-4"
+              class="flex justify-center items-center w-[884px] absolute left-[11px] top-0 gap-4"
             >
               <div class="flex-grow-0 flex-shrink-0 w-8 h-0.5 bg-[#ff5f49]"></div>
               <p
-                class="flex-grow w-[44vw] text-lg font-semibold text-left uppercase text-[#ff5f49]"
+                class="flex-grow w-[836px] text-lg font-semibold text-left uppercase text-[#ff5f49]"
               >
                 Work History
               </p>
             </div>
             <div
-              class="flex flex-col justify-start items-start absolute left-[.5vw] top-[2.9vw] gap-2.5"
+              class="flex flex-col justify-start items-start absolute left-[11px] top-[57px] gap-2.5"
             >
               <div
                 class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
@@ -435,12 +347,12 @@
                   </p>
                 </div>
                 <p
-                  class="flex-grow-0 flex-shrink-0 w-[22vw] text-xl font-semibold text-left text-[#121314]"
+                  class="flex-grow-0 flex-shrink-0 w-[424px] text-xl font-semibold text-left text-[#121314]"
                 >
                   Stocker/Frozen Food Lead
                 </p>
               </div>
-              <p class="flex-grow-0 flex-shrink-0 w-[19vw] text-base text-left text-[#5e6971]">
+              <p class="flex-grow-0 flex-shrink-0 w-[356px] text-base text-left text-[#5e6971]">
                 I started as the lowest man on the totem pole, stocking the grocery shelves and
                 maintaining floor conditions while helping customers to now running the Frozen Food
                 Department of the store. My job entails ordering the weekly ad, Stocking the trucks
@@ -448,7 +360,7 @@
               </p>
             </div>
             <div
-              class="flex flex-col justify-start items-start absolute left-[24vw] top-[2.9vw] gap-2.5"
+              class="flex flex-col justify-start items-start absolute left-[453px] top-[57px] gap-2.5"
             >
               <div
                 class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
@@ -467,19 +379,19 @@
                   </p>
                 </div>
                 <p
-                  class="flex-grow-0 flex-shrink-0 w-[22vw] text-xl font-semibold text-left text-[#121314]"
+                  class="flex-grow-0 flex-shrink-0 w-[424px] text-xl font-semibold text-left text-[#121314]"
                 >
                   Cook/Server
                 </p>
               </div>
-              <p class="flex-grow-0 flex-shrink-0 w-[19vw] text-base text-left text-[#5e6971]">
+              <p class="flex-grow-0 flex-shrink-0 w-[356px] text-base text-left text-[#5e6971]">
                 I worked here as a cook and a server, usually at the same time, bouncing between
                 taking the orders of people who walked in/called in, and cooking the orders for
                 them, often being one of the only employees in the building.
               </p>
             </div>
             <div
-              class="flex flex-col justify-start items-start w-[22vw] absolute left-[.5vw] top-[calc(150px+15vw)] gap-2.5"
+              class="flex flex-col justify-start items-start w-[424px] absolute left-[11px] top-[379px] gap-2.5"
             >
               <div
                 class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
@@ -498,12 +410,12 @@
                   </p>
                 </div>
                 <p
-                  class="flex-grow-0 flex-shrink-0 w-[22vw] text-xl font-semibold text-left text-[#121314]"
+                  class="flex-grow-0 flex-shrink-0 w-[424px] text-xl font-semibold text-left text-[#121314]"
                 >
                   Build Team Member/ Build Team Leader
                 </p>
               </div>
-              <p class="flex-grow-0 flex-shrink-0 w-[19vw] text-base text-left text-[#5e6971]">
+              <p class="flex-grow-0 flex-shrink-0 w-[356px] text-base text-left text-[#5e6971]">
                 I joined my High School's FIRST robotics team my sophomore year of school, joining
                 the build team, and learning to use a multitude of power tools including Angle
                 Grinders, Miter Saws, Grinders, CNC, 3D Printers and Laser Cutters to name a few.
@@ -513,13 +425,13 @@
         </div>
       </div>
       <div
-        class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-11 px-[16vw] py-[3vw]"
+        class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-11 px-[315px] py-[21px]"
       >
         <div
           class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-6"
         >
           <p
-            class="flex-grow-0 flex-shrink-0 w-[38vw] text-5xl font-semibold text-center text-[#121314]"
+            class="flex-grow-0 flex-shrink-0 w-[648px] text-5xl font-semibold text-center text-[#121314]"
           >
             My Certifications
           </p>
@@ -538,7 +450,7 @@
                   </p>
                 </div>
                 <p
-                  class="flex-grow-0 flex-shrink-0 w-[22vw] text-xl font-semibold text-left text-[#121314]"
+                  class="flex-grow-0 flex-shrink-0 w-[424px] text-xl font-semibold text-left text-[#121314]"
                 >
                   Adobe Certified Associate in Visual Design Using Adobe Photoshop
                 </p>
@@ -556,7 +468,7 @@
                   </p>
                 </div>
                 <p
-                  class="flex-grow-0 flex-shrink-0 w-[22vw] text-xl font-semibold text-left text-[#121314]"
+                  class="flex-grow-0 flex-shrink-0 w-[424px] text-xl font-semibold text-left text-[#121314]"
                 >
                   Adobe Certified Associate in Print &#x26; Digital Publication Using Adobe InDesign
                 </p>
@@ -574,7 +486,7 @@
                   </p>
                 </div>
                 <p
-                  class="flex-grow-0 flex-shrink-0 w-[22vw] text-xl font-semibold text-left text-[#121314]"
+                  class="flex-grow-0 flex-shrink-0 w-[424px] text-xl font-semibold text-left text-[#121314]"
                 >
                   Adobe Certified Associate in Graphic Design &#x26; Illustration Using Adobe
                   Illustrator
@@ -595,7 +507,7 @@
                   </p>
                 </div>
                 <p
-                  class="flex-grow-0 flex-shrink-0 w-[22vw] text-xl font-semibold text-left text-[#121314]"
+                  class="flex-grow-0 flex-shrink-0 w-[424px] text-xl font-semibold text-left text-[#121314]"
                 >
                   Microsoft Office Specialist: Word
                 </p>
@@ -613,7 +525,7 @@
                   </p>
                 </div>
                 <p
-                  class="flex-grow-0 flex-shrink-0 w-[22vw] text-xl font-semibold text-left text-[#121314]"
+                  class="flex-grow-0 flex-shrink-0 w-[424px] text-xl font-semibold text-left text-[#121314]"
                 >
                   Microsoft Office Specialist: Excel
                 </p>
@@ -631,7 +543,7 @@
                   </p>
                 </div>
                 <p
-                  class="flex-grow-0 flex-shrink-0 w-[22vw] text-xl font-semibold text-left text-[#121314]"
+                  class="flex-grow-0 flex-shrink-0 w-[424px] text-xl font-semibold text-left text-[#121314]"
                 >
                   Microsoft Office Specialist: PowerPoint
                 </p>
@@ -651,7 +563,7 @@
                   </p>
                 </div>
                 <p
-                  class="flex-grow-0 flex-shrink-0 w-[22vw] text-xl font-semibold text-left text-[#121314]"
+                  class="flex-grow-0 flex-shrink-0 w-[424px] text-xl font-semibold text-left text-[#121314]"
                 >
                   National Honor Society Member
                 </p>
@@ -669,7 +581,7 @@
                   </p>
                 </div>
                 <p
-                  class="flex-grow-0 flex-shrink-0 w-[22vw] text-xl font-semibold text-left text-[#121314]"
+                  class="flex-grow-0 flex-shrink-0 w-[424px] text-xl font-semibold text-left text-[#121314]"
                 >
                   Autodesk Inventor Certified User
                 </p>
@@ -680,17 +592,13 @@
       </div>
       <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0">
         <div
-          class="footer"
+          class="flex justify-start items-start flex-grow-0 flex-shrink-0 relative gap-2.5 px-[300px] py-8"
         >
-          <p class="flex-grow-0 flex-shrink-0 w-[100vw] text-lg text-center text-[#5e6971]">
+          <p class="flex-grow-0 flex-shrink-0 w-[1320px] text-lg text-center text-[#5e6971]">
             All Content © 2024-Conner Oaks
           </p>
         </div>
       </div>
-    </div>  
-    <!--Mobile Page-->
-    <div id="mobile-container">
-
     </div>
   </body>
 </html>
