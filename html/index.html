@@ -5,36 +5,21 @@
     <meta name="viewport" content="width=100vw, initial-scale=1.0" />
     <title>Conner Oaks</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!--Refresh Script-->
     <script>
-      let hasRefreshed = false; // Flag to prevent repeated refreshes
+    document.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    e.stopPropagation();
+    });
 
-      function autoRefresh() {
-          // Get the current viewport width
-          const viewportWidth = window.innerWidth;
-
-          // Set the desired target viewport width (with a little play)
-          const targetVW = 725; // Change this value to your desired width in vw
-          const buffer = 0; // Add a buffer (e.g., 20 vw) for some play
-
-          // Check if the current viewport width is within the target range
-          if (!hasRefreshed && viewportWidth <= targetVW + buffer) {
-              // Reload the page
-              window.location.reload(true);
-              hasRefreshed = true; // Mark as refreshed to prevent further loops
-          } else {
-              hasRefreshed = false; // Reset the flag if the viewport width changes
-          }
-      }
-
-      // Call the autoRefresh function whenever the window is resized
-      window.addEventListener('resize', autoRefresh);
-  </script>
+    </script>
       <!--Script for screen size fix-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
       $(document).ready(function() {
           var windowWidth = $(window).width();
-          var maxDeviceWidth = 725; // Set your desired threshold (e.g., 768 pixels for tablets)
+          var maxDeviceWidth = 768; // Set your desired threshold (e.g., 768 pixels for tablets)
           
           if (windowWidth > maxDeviceWidth) {
             $('#desktop-container').show(); $('#mobile-container').hide();
@@ -44,18 +29,31 @@
       });
   </script>
     <style>
+
       html, body {
         display: flex;
         flex-direction: column;
         flex: 1;
         width: 100%;
-        height:100dvh;
+        height:100%;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         cursor: default; color: black; text-decoration:none;
         font-size: calc(5pt + .5vw)
       }
+      .Mobile{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+        height:100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        cursor: default; color: black; text-decoration:none;
+        font-size: calc(5pt + 2vw)
+      }
       .footer{
+        width: 100%;
         position: fixed;
         left: 0;
         bottom: 0;
@@ -67,6 +65,34 @@
     </style>
   </head>
   <body>
+    <script>
+      let hasRefreshed = false; // Flag to prevent repeated refreshes
+  
+      function autoRefresh() {
+          // Get the current viewport width
+          const viewportWidth = window.innerWidth;
+  
+          // Set the desired target viewport width (with a buffer zone)
+          const targetVW = 768; // Change this value to your desired width in vw
+          const buffer = 20; // Add a buffer (e.g., 20 vw) for some play
+  
+          // Calculate the acceptable range
+          const minVW = targetVW - buffer;
+          const maxVW = targetVW + buffer;
+  
+          // Check if the current viewport width is within the acceptable range
+          if (!hasRefreshed && viewportWidth >= minVW && viewportWidth <= maxVW) {
+              // Reload the page
+              window.location.reload(true);
+              hasRefreshed = true; // Mark as refreshed to prevent further loops
+          } else {
+              hasRefreshed = false; // Reset the flag if the viewport width changes
+          }
+      }
+  
+      // Call the autoRefresh function whenever the window is resized
+      window.addEventListener('resize', autoRefresh);
+  </script>  
     <!--Desktop Page-->
     <div id="desktop-container" class="flex flex-col justify-start items-center gap-[1.5vmin] bg-white">
     <!--Top Section-->
@@ -192,7 +218,7 @@
           class="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[90vw] relative gap-10 p-14 rounded-2xl bg-white border border-[#818181]/[0.85]"
           style="box-shadow: 0vw 2.5vw 7.7vw 0 rgba(18,19,20,0.08);"
         >
-          <img class="flex-grow-0 flex-shrink-0 w-[clamp10vw] h-[10vw]" src="image.png" />
+          <img class="flex-grow-0 flex-shrink-0 w-[clamp10vw] h-[10vw]" src="circle-pic.png" />
           <div class="flex flex-col justify-start items-start flex-grow relative gap-5 w-[1vw]">
             <p
               class="self-stretch flex-grow-0 flex-shrink-0 w-[35vw] text-[2vw] font-semibold text-left text-[#121314]"
@@ -335,7 +361,7 @@
                     style="box-shadow: 0px 8px 24px 0 rgba(18,19,20,0.04);"
                   >
                     <div
-                      class="flex-grow-0 flex-shrink-0 w-10 h-10 relative bg-[url(&#x27;tool.png&#x27;)] bg-cover bg-no-repeat bg-center"
+                      class="flex-grow-0 flex-shrink-0 w-10 h-10 relative bg-[url(&#x27;tool.png&#x27;)] bg-contain bg-no-repeat bg-center"
                     ></div>
                     <p
                       class="self-stretch flex-grow-0 flex-shrink-0 w-32 text-base font-medium text-center text-[#121314]"
@@ -348,12 +374,7 @@
                       class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-32 relative gap-3 py-6 rounded-md bg-white"
                       style="box-shadow: 0px 8px 24px 0 rgba(18,19,20,0.04);"
                     >
-                      <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative">
-                        <img
-                          src="image-7.png"
-                          class="w-[31.11px] h-[31.11px] absolute left-[3.44px] top-[3.44px] object-cover"
-                        />
-                      </div>
+                      <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative bg-[url(&#x27;notion.png&#x27;)] bg-contain bg-no-repeat bg-center"></div>
                       <p
                         class="self-stretch flex-grow-0 flex-shrink-0 w-32 text-base font-medium text-center text-[#121314]"
                       >
@@ -365,12 +386,7 @@
                     class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-32 relative gap-3 py-6 rounded-md bg-white"
                     style="box-shadow: 0px 8px 24px 0 rgba(18,19,20,0.04);"
                   >
-                    <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative overflow-hidden">
-                      <img
-                        src="image-2.png"
-                        class="w-[23.33px] h-[35.56px] absolute left-[6.78px] top-[1.22px] object-contain"
-                      />
-                    </div>
+                  <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative bg-[url(&#x27;figma-small.png&#x27;)] bg-contain bg-no-repeat bg-center"></div>
                     <p
                       class="self-stretch flex-grow-0 flex-shrink-0 w-32 text-base font-medium text-center text-[#121314]"
                     >
@@ -383,12 +399,7 @@
                     class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-32 relative gap-3 py-6 rounded-md bg-white"
                     style="box-shadow: 0px 8px 24px 0 rgba(18,19,20,0.04);"
                   >
-                    <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative">
-                      <img
-                        src="image-3.png"
-                        class="w-[33.33px] h-[33.33px] absolute left-[2.33px] top-[2.33px] object-contain"
-                      />
-                    </div>
+                  <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative bg-[url(&#x27;photoshop.png&#x27;)] bg-contain bg-no-repeat bg-center"></div>
                     <p
                       class="self-stretch flex-grow-0 flex-shrink-0 w-32 text-base font-medium text-center text-[#121314]"
                     >
@@ -399,13 +410,7 @@
                     class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-32 relative gap-3 py-6 rounded-md bg-white"
                     style="box-shadow: 0px 8px 24px 0 rgba(18,19,20,0.04);"
                   >
-                    <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative">
-                      <div class="w-10 h-10 absolute left-0 top-0"></div>
-                      <img
-                        src="image-4.png"
-                        class="w-[31.11px] h-[31.11px] absolute left-[3.44px] top-[3.44px] object-contain"
-                      />
-                    </div>
+                  <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative bg-[url(&#x27;illustrator.png&#x27;)] bg-contain bg-no-repeat bg-center"></div>
                     <p
                       class="self-stretch flex-grow-0 flex-shrink-0 w-32 text-base font-medium text-center text-[#121314]"
                     >
@@ -416,12 +421,7 @@
                     class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-32 relative gap-3 py-6 rounded-md bg-white"
                     style="box-shadow: 0px 8px 24px 0 rgba(18,19,20,0.04);"
                   >
-                    <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative">
-                      <img
-                        src="image-5.png"
-                        class="w-[31.11px] h-[31.11px] absolute left-[3.44px] top-[3.44px] object-contain"
-                      />
-                    </div>
+                  <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative bg-[url(&#x27;indesign.png&#x27;)] bg-contain bg-no-repeat bg-center"></div>
                     <p
                       class="self-stretch flex-grow-0 flex-shrink-0 w-32 text-base font-medium text-center text-[#121314]"
                     >
@@ -717,8 +717,623 @@
       </div>
     </div>  
     <!--Mobile Page-->
-    <div id="mobile-container">
-
+    <div id="mobile-container" class="Mobile">
+        <div class="flex-col justify-start items-center w-[100vw] gap-[5vmin] bg-white">
+          <div
+            class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[16.5vw] pt-10 pb-[10.3vw]"
+          >
+            <div
+              class="flex justify-between items-center self-stretch flex-grow-0 flex-shrink-0 px-5 py-8"
+            >
+              <div
+                class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[1.5vw]"
+              >
+                <div
+                  class="flex-grow-0 flex-shrink-0 w-[5.7vw] h-[5.2vw] relative overflow-hidden bg-[url(&#x27;logo/favicon.png&#x27;)] bg-cover bg-no-repeat bg-center"
+                ></div>
+                <p class="flex-grow-0 flex-shrink-0 text-2xl font-semibold text-center text-[#121314]">
+                  Conner
+                </p>
+              </div>
+              <div
+                class="flex justify-end items-center flex-grow-0 flex-shrink-0 w-[45vw] h-[4.8vw] px-6 relative gap-8"
+              >
+                <p class="flex-grow-0 flex-shrink-0 text-lg font-bold text-center text-[#121314]">
+                  Home
+                </p>
+                <p class="flex-grow-0 flex-shrink-0 text-lg text-center text-[#7b848b]">
+                  <a href="/experience.html">Experience</a>
+                </p>
+                <p class="flex-grow-0 flex-shrink-0 text-lg text-center text-[#7b848b]">
+                  <a href="https://www.conoaks.com">Contact</a>
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[18.75vw]"
+            >
+              <img
+                src="rectangle-34.png"
+                class="flex-grow-0 flex-shrink-0 w-[74vw] h-[74vw] rounded-2xl object-fill"
+              />
+              <div
+                class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-8"
+              >
+                <div
+                  class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-6"
+                >
+                  <p
+                    class="flex-grow-0 flex-shrink-0 w-[89vw] text-[11vw] font-semibold text-center text-[#121314]"
+                  >
+                    <span
+                      class="flex-grow-0 flex-shrink-0 w-[89vw] text-[11vw] font-semibold text-center text-[#121314]"
+                      >Hello, I’m</span
+                    ><br /><span
+                      class="flex-grow-0 flex-shrink-0 w-[89vw] text-[11vw] font-semibold text-center text-[#121314]"
+                      >Conner Oaks.</span
+                    >
+                  </p>
+                </div>
+                <div class="flex justify-center items-end flex-grow-0 flex-shrink-0 gap-4">
+                  <div
+                    class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 px-8 rounded bg-[#1777e5]"
+                  >
+                    <p
+                      class="Mobile flex-shrink-0 font-semibold text-center capitalize text-white"
+                    >
+                    <a href="mailto:conoaks@gmail.com">Say Hello</a>
+                    </p>
+                  </div>
+                  <div
+                    class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 px-8 rounded bg-[#f5f6f7]"
+                  >
+                    <p
+                      class="Mobile flex-shrink-0 font-semibold text-center capitalize text-[#121314]"
+                    >
+                      View Portfolio
+                    </p>
+                    <svg
+                      width="25"
+                      height="24"
+                      viewBox="0 0 25 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="flex-grow-0 flex-shrink-0 w-6 h-6 relative"
+                      preserveAspectRatio="xMidYMid meet"
+                    >
+                      <path
+                        d="M6.5 18L18.5 6"
+                        stroke="#121314"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                      <path
+                        d="M8.75 6H18.5V15.75"
+                        stroke="#121314"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 overflow-hidden gap-20"
+          >
+            <div
+              class="flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 w-[98vw] relative gap-10 p-14 rounded-2xl bg-white border border-[#818181]/[0.85]"
+              style="box-shadow: 0px 8px 24px 0 rgba(18,19,20,0.08);"
+            >
+              <img class="flex-grow-0 flex-shrink-0" src="circle-pic.png" />
+              <div
+                class="flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-5"
+              >
+                <p
+                  class="self-stretch flex-grow-0 flex-shrink-0 w-[83vw] text-[4.4vw] font-semibold text-left text-[#121314]"
+                >
+                  A Jack of all Trades
+                </p>
+                <p
+                  class="self-stretch flex-grow-0 flex-shrink-0 w-[83vw] text-xl text-left text-[#485057]"
+                >
+                I’m an Information Technology major at FSU who has become a Jack of all Trades. My “toolbox” includes networking, coding, basic manufacturing, photo editing, 3D printing, and CAD modeling, and it is ever expanding as I continue to tinker and learn more. 
+                </p>
+              </div>
+              <div
+                class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 w-[36vw] gap-4"
+              >
+                <div
+                  class="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-3 px-8 rounded bg-[#f5f6f7]"
+                >
+                  <svg
+                    width="25"
+                    height="24"
+                    viewBox="0 0 25 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="flex-grow-0 flex-shrink-0 w-6 h-6 relative"
+                    preserveAspectRatio="xMidYMid meet"
+                  >
+                    <path
+                      d="M17 12H21.5C21.6989 12 21.8897 12.079 22.0303 12.2197C22.171 12.3603 22.25 12.5511 22.25 12.75V18.75C22.25 18.9489 22.171 19.1397 22.0303 19.2803C21.8897 19.421 21.6989 19.5 21.5 19.5H3.5C3.30109 19.5 3.11032 19.421 2.96967 19.2803C2.82902 19.1397 2.75 18.9489 2.75 18.75V12.75C2.75 12.5511 2.82902 12.3603 2.96967 12.2197C3.11032 12.079 3.30109 12 3.5 12H8"
+                      stroke="#121314"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M12.5 2.25V12"
+                      stroke="#121314"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M8 7.5L12.5 12L17 7.5"
+                      stroke="#121314"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M18.5 15.75C18.5 15.9571 18.3321 16.125 18.125 16.125C17.9179 16.125 17.75 15.9571 17.75 15.75C17.75 15.5429 17.9179 15.375 18.125 15.375C18.3321 15.375 18.5 15.5429 18.5 15.75Z"
+                      fill="#121314"
+                      stroke="#121314"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                  <p
+                    class="Mobile flex-shrink-0 text-lg font-semibold text-center capitalize text-[#121314]"
+                  >
+                  <a href="Resume/resume-updated.pdf" download="coaks-resume">Download Resume</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 h-[800px] w-[70vw] gap-6"
+            >
+              <div
+                class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-9"
+              >
+                <div
+                  class="flex justify-center items-center flex-grow-0 flex-shrink-0 w-[58.5vw] relative gap-4"
+                >
+                  <div class="flex-grow-0 flex-shrink-0 w-8 h-0.5 bg-[#1777e5]"></div>
+                  <p
+                    class="flex-grow w-[52vw] text-lg font-semibold text-left uppercase text-[#1777e5]"
+                  >
+                    Education
+                  </p>
+                </div>
+                <div
+                  class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-2.5"
+                >
+                  <div
+                    class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
+                  >
+                    <div
+                      class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1.5"
+                    >
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#1777e5]">
+                        Expected Graduation 2025
+                      </p>
+                    </div>
+                    <p
+                      class="flex-grow-0 flex-shrink-0 w-[58.5vw] text-xl font-semibold text-left text-[#121314]"
+                    >
+                      Florida State University (FSU)
+                    </p>
+                  </div>
+                  <p class="flex-grow-0 flex-shrink-0 w-[49vw] text-base text-left text-[#5e6971]">
+                    Bachelors Degree in Information Technology
+                  </p>
+                </div>
+                <div
+                  class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-2.5"
+                >
+                  <div
+                    class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
+                  >
+                    <div
+                      class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1.5"
+                    >
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#1777e5]">
+                        Graduated 2021
+                      </p>
+                    </div>
+                    <p
+                      class="flex-grow-0 flex-shrink-0 w-[58.5vw] text-xl font-semibold text-left text-[#121314]"
+                    >
+                      Tallahassee Community College (TCC)
+                    </p>
+                  </div>
+                  <p class="flex-grow-0 flex-shrink-0 w-[49vw] text-base text-left text-[#5e6971]">
+                    Associates Degree for transfer to FSU
+                  </p>
+                </div>
+                <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-9">
+                  <div
+                    class="flex justify-center items-center flex-grow-0 flex-shrink-0 w-[58.5vw] relative gap-4"
+                  >
+                    <div class="flex-grow-0 flex-shrink-0 w-8 h-0.5 bg-[#2db24a]"></div>
+                    <p
+                      class="flex-grow w-[52vw] text-lg font-semibold text-left uppercase text-[#2db24a]"
+                    >
+                      Tools i USE
+                    </p>
+                  </div>
+                  <div class="flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 gap-5">
+                    <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 gap-5">
+                      <div
+                        class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-32 relative gap-3 py-6 rounded-md bg-white"
+                        style="box-shadow: 0px 8px 24px 0 rgba(18,19,20,0.04);"
+                      >
+                        <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative bg-[url(&#x27;tool.png&#x27;)] bg-contain bg-no-repeat bg-center"></div>
+                        <p
+                          class="self-stretch flex-grow-0 flex-shrink-0 w-32 text-base font-medium text-center text-[#121314]"
+                        >
+                          Fusion 360
+                        </p>
+                      </div>
+                      <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 gap-5">
+                        <div
+                          class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-32 relative gap-3 py-6 rounded-md bg-white"
+                          style="box-shadow: 0px 8px 24px 0 rgba(18,19,20,0.04);"
+                        >
+                          <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative bg-[url(&#x27;notion.png&#x27;)] bg-contain bg-no-repeat bg-center"></div>
+                          <p
+                            class="self-stretch flex-grow-0 flex-shrink-0 w-32 text-base font-medium text-center text-[#121314]"
+                          >
+                            Notion
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-32 relative gap-3 py-6 rounded-md bg-white"
+                        style="box-shadow: 0px 8px 24px 0 rgba(18,19,20,0.04);"
+                      >
+                        <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative bg-[url(&#x27;figma-small.png&#x27;)] bg-contain bg-no-repeat bg-center"></div>
+                        <p
+                          class="self-stretch flex-grow-0 flex-shrink-0 w-32 text-base font-medium text-center text-[#121314]"
+                        >
+                          Figma
+                        </p>
+                      </div>
+                    </div>
+                    <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 gap-5">
+                      <div
+                        class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-32 relative gap-3 py-6 rounded-md bg-white"
+                        style="box-shadow: 0px 8px 24px 0 rgba(18,19,20,0.04);"
+                      >
+                        <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative bg-[url(&#x27;photoshop.png&#x27;)] bg-contain bg-no-repeat bg-center"></div>
+                        <p
+                          class="self-stretch flex-grow-0 flex-shrink-0 w-32 text-base font-medium text-center text-[#121314]"
+                        >
+                          Photoshop
+                        </p>
+                      </div>
+                      <div
+                        class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-32 relative gap-3 py-6 rounded-md bg-white"
+                        style="box-shadow: 0px 8px 24px 0 rgba(18,19,20,0.04);"
+                      >
+                        <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative bg-[url(&#x27;illustrator.png&#x27;)] bg-contain bg-no-repeat bg-center"></div>
+                        <p
+                          class="self-stretch flex-grow-0 flex-shrink-0 w-32 text-base font-medium text-center text-[#121314]"
+                        >
+                          Illustrator
+                        </p>
+                      </div>
+                      <div
+                        class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-32 relative gap-3 py-6 rounded-md bg-white"
+                        style="box-shadow: 0px 8px 24px 0 rgba(18,19,20,0.04);"
+                      >
+                      <div class="flex-grow-0 flex-shrink-0 w-10 h-10 relative bg-[url(&#x27;indesign.png&#x27;)] bg-contain bg-no-repeat bg-center"></div>
+                        <p
+                          class="self-stretch flex-grow-0 flex-shrink-0 w-32 text-base font-medium text-center text-[#121314]"
+                        >
+                          InDesign
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 w-[70vw] gap-[2.5vw]"
+              >
+                <div
+                  class="flex justify-center items-center flex-grow-0 flex-shrink-0 w-[58.5vw] relative gap-4"
+                >
+                  <div class="flex-grow-0 flex-shrink-0 w-8 h-0.5 bg-[#ff5f49]"></div>
+                  <p
+                    class="flex-grow w-[52vw] text-lg font-semibold text-left uppercase text-[#ff5f49]"
+                  >
+                    Work History
+                  </p>
+                </div>
+                <div
+                  class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-2.5"
+                >
+                  <div
+                    class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
+                  >
+                    <div
+                      class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1.5"
+                    >
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#ff5f49]">
+                        Jan ‘21 to Present
+                      </p>
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#ff5f49]">
+                        -
+                      </p>
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#ff5f49]">
+                        Winn-Dixie
+                      </p>
+                    </div>
+                    <p
+                      class="flex-grow-0 flex-shrink-0 w-[58.5vw] text-xl font-semibold text-left text-[#121314]"
+                    >
+                      Stocker/Frozen Food Lead
+                    </p>
+                  </div>
+                  <p class="flex-grow-0 flex-shrink-0 w-[49vw] text-base text-left text-[#5e6971]">
+                    I started as the lowest man on the totem pole, stocking the grocery shelves and
+                    maintaining floor conditions while helping customers to now running the Frozen Food
+                    Department of the store. My job entails ordering the weekly ad, Stocking the trucks
+                    that arrive, building displays, and managing back room inventory.
+                  </p>
+                </div>
+                <div
+                  class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-2.5"
+                >
+                  <div
+                    class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
+                  >
+                    <div
+                      class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1.5"
+                    >
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#ff5f49]">
+                        Mar ‘19 to Dec ‘20
+                      </p>
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#ff5f49]">
+                        -
+                      </p>
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#ff5f49]">
+                        Tasty J’s
+                      </p>
+                    </div>
+                    <p
+                      class="flex-grow-0 flex-shrink-0 w-[58.5vw] text-xl font-semibold text-left text-[#121314]"
+                    >
+                      Cook/Server
+                    </p>
+                  </div>
+                  <p class="flex-grow-0 flex-shrink-0 w-[49vw] text-base text-left text-[#5e6971]">
+                    I worked here as a cook and a server, usually at the same time, bouncing between
+                    taking the orders of people who walked in/called in, and cooking the orders for
+                    them, often being one of the only employees in the building.
+                  </p>
+                </div>
+                <div
+                  class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 w-[58.5vw] relative gap-2.5"
+                >
+                  <div
+                    class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
+                  >
+                    <div
+                      class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1.5"
+                    >
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#ff5f49]">
+                        ‘19 to ‘21
+                      </p>
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#ff5f49]">
+                        -
+                      </p>
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#ff5f49]">
+                        FIRST Robotics Team 6145
+                      </p>
+                    </div>
+                    <p
+                      class="flex-grow-0 flex-shrink-0 w-[58.5vw] text-xl font-semibold text-left text-[#121314]"
+                    >
+                      Build Team Member/ Build Team Leader
+                    </p>
+                  </div>
+                  <p class="flex-grow-0 flex-shrink-0 w-[49vw] text-base text-left text-[#5e6971]">
+                    I joined my High School's FIRST robotics team my sophomore year of school, joining
+                    the build team, and learning to use a multitude of power tools including Angle
+                    Grinders, Miter Saws, Grinders, CNC, 3D Printers and Laser Cutters to name a few.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-11 py-[3vw]"
+          >
+            <div
+              class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-6"
+            >
+              <p
+                class="flex-grow-0 flex-shrink-0 w-[89vw] text-5xl font-semibold text-center text-[#121314]"
+              >
+                My Certifications
+              </p>
+            </div>
+            <div
+              class="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 w-[97vw] gap-11"
+            >
+              <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-[45px]">
+                <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-2.5">
+                  <div
+                    class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
+                  >
+                    <div
+                      class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1.5"
+                    >
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#1777e5]">
+                        Mar ‘18 to Mar ‘21
+                      </p>
+                    </div>
+                    <p
+                      class="flex-grow-0 flex-shrink-0 w-[58.5vw] text-xl font-semibold text-left text-[#121314]"
+                    >
+                      Adobe Certified Associate in Visual Design Using Adobe Photoshop
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-2.5">
+                  <div
+                    class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
+                  >
+                    <div
+                      class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1.5"
+                    >
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#1777e5]">
+                        Dec ‘18 to Dec ‘21
+                      </p>
+                    </div>
+                    <p
+                      class="flex-grow-0 flex-shrink-0 w-[58.5vw] text-xl font-semibold text-left text-[#121314]"
+                    >
+                      Adobe Certified Associate in Print &#x26; Digital Publication Using Adobe InDesign
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-2.5">
+                  <div
+                    class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
+                  >
+                    <div
+                      class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1.5"
+                    >
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#1777e5]">
+                        May ‘18 to May ‘21
+                      </p>
+                    </div>
+                    <p
+                      class="flex-grow-0 flex-shrink-0 w-[58.5vw] text-xl font-semibold text-left text-[#121314]"
+                    >
+                      Adobe Certified Associate in Graphic Design &#x26; Illustration Using Adobe
+                      Illustrator
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-[45px]">
+                <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-2.5">
+                  <div
+                    class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
+                  >
+                    <div
+                      class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1.5"
+                    >
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#1777e5]">
+                        Awarded Mar ‘16
+                      </p>
+                    </div>
+                    <p
+                      class="flex-grow-0 flex-shrink-0 w-[58.5vw] text-xl font-semibold text-left text-[#121314]"
+                    >
+                      Microsoft Office Specialist: Word
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-2.5">
+                  <div
+                    class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
+                  >
+                    <div
+                      class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1.5"
+                    >
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#1777e5]">
+                        Awarded Mar ‘16
+                      </p>
+                    </div>
+                    <p
+                      class="flex-grow-0 flex-shrink-0 w-[58.5vw] text-xl font-semibold text-left text-[#121314]"
+                    >
+                      Microsoft Office Specialist: Excel
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-2.5">
+                  <div
+                    class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
+                  >
+                    <div
+                      class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1.5"
+                    >
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#1777e5]">
+                        Awarded Mar ‘16
+                      </p>
+                    </div>
+                    <p
+                      class="flex-grow-0 flex-shrink-0 w-[58.5vw] text-xl font-semibold text-left text-[#121314]"
+                    >
+                      Microsoft Office Specialist: PowerPoint
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[45px]"
+              >
+                <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-2.5">
+                  <div
+                    class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
+                  >
+                    <div
+                      class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1.5"
+                    >
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#1777e5]">
+                        Inducted May ‘20
+                      </p>
+                    </div>
+                    <p
+                      class="flex-grow-0 flex-shrink-0 w-[58.5vw] text-xl font-semibold text-left text-[#121314]"
+                    >
+                      National Honor Society Member
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 gap-2.5">
+                  <div
+                    class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-1"
+                  >
+                    <div
+                      class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-1.5"
+                    >
+                      <p class="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-[#1777e5]">
+                        Awarded Mar ‘18
+                      </p>
+                    </div>
+                    <p
+                      class="flex-grow-0 flex-shrink-0 w-[58.5vw] text-xl font-semibold text-left text-[#121314]"
+                    >
+                      Autodesk Inventor Certified User
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0">
+            <div
+              class="footer"
+            >
+              <p class="flex-grow-0 flex-shrink-0 text-lg text-center text-[#5e6971]">
+                All Content © 2024-Conner Oaks
+              </p>
+            </div>
+          </div>
+        </div>
+      </html>      
     </div>
   </body>
 </html>
