@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=100vw, initial-scale=1.0" />
     <title>Conner Oaks</title>
+    <link rel="icon" type="image/x-icon" href="/co-black.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <!--Refresh Script-->
     <script>
@@ -47,6 +48,18 @@
         flex: 1;
         width: 100%;
         height:100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        cursor: default; color: black; text-decoration:none;
+        font-size: calc(5pt + 2vw)
+      }
+      .header{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+        height:100%;
+        background-color: rgb(27, 94, 32);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         cursor: default; color: black; text-decoration:none;
@@ -108,11 +121,13 @@
             class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[.6vw]"
           >
             <div
-              class="flex-grow-0 flex-shrink-0 w-[1.9vw] h-[1.9vw] relative overflow-hidden bg-[url(&#x27;logo/favicon.png&#x27;)] bg-cover bg-no-repeat bg-center"
+              class="flex-grow-0 flex-shrink-0 w-[3vw] h-[3vw] relative bg-[url(&#x27;/co-black.png&#x27;)] bg-contain bg-no-repeat bg-center"
             ></div>
-            <p class="flex-grow-0 flex-shrink-0 text-2xl font-semibold text-center text-[#121314]">
+            <!--
+              <p class="flex-grow-0 flex-shrink-0 text-2xl font-semibold text-center text-[#121314]">
               Conner
             </p>
+          -->
           </div>
           <div class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-8">
             <p class="flex-grow-0 flex-shrink-0 text-lg font-bold text-center text-[#121314]">
@@ -179,7 +194,7 @@
                 <p
                   class="flex-grow-0 flex-shrink-0 text-lg font-semibold text-center capitalize text-[#121314]"
                 >
-                  View Portfolio
+                  <a href="/portfolio.html"> View Portfolio</a>
                 </p>
                 <svg
                   width="24"
@@ -729,22 +744,24 @@
                 class="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[1.5vw]"
               >
                 <div
-                  class="flex-grow-0 flex-shrink-0 w-[5.7vw] h-[5.2vw] relative overflow-hidden bg-[url(&#x27;logo/favicon.png&#x27;)] bg-cover bg-no-repeat bg-center"
+                  class="flex-grow-0 flex-shrink-0 w-[6vw] h-[6vw] relative overflow-hidden bg-[url(&#x27;co-black.png&#x27;)] bg-cover bg-no-repeat bg-center"
                 ></div>
+                <!--
                 <p class="flex-grow-0 flex-shrink-0 text-2xl font-semibold text-center text-[#121314]">
                   Conner
                 </p>
+              -->
               </div>
               <div
                 class="flex justify-end items-center flex-grow-0 flex-shrink-0 w-[45vw] h-[4.8vw] px-6 relative gap-8"
               >
-                <p class="flex-grow-0 flex-shrink-0 text-lg font-bold text-center text-[#121314]">
+                <p class="Mobile flex-grow-0 flex-shrink-0 text-lg font-bold text-center text-[#121314]">
                   Home
                 </p>
-                <p class="flex-grow-0 flex-shrink-0 text-lg text-center text-[#7b848b]">
+                <p class="Mobile flex-grow-0 flex-shrink-0 text-lg text-center text-[#7b848b]">
                   <a href="/experience.html">Experience</a>
                 </p>
-                <p class="flex-grow-0 flex-shrink-0 text-lg text-center text-[#7b848b]">
+                <p class="Mobile flex-grow-0 flex-shrink-0 text-lg text-center text-[#7b848b]">
                   <a href="https://www.conoaks.com">Contact</a>
                 </p>
               </div>
@@ -790,7 +807,7 @@
                     <p
                       class="Mobile flex-shrink-0 font-semibold text-center capitalize text-[#121314]"
                     >
-                      View Portfolio
+                      <a href="/portfolio.html"> View Portfolio</a>
                     </p>
                     <svg
                       width="25"
@@ -1154,7 +1171,7 @@
             </div>
           </div>
           <div
-            class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-11 py-[3vw]"
+            class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-11 px-[16vw] py-[3vw]"
           >
             <div
               class="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-6"
