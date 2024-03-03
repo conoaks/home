@@ -1,7 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Experience</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=100vw, initial-scale=1.0" />
+    <title>Conner Oaks-Experience</title>
+    <link rel="icon" type="image/x-icon" href="/images/co-black.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!--Refresh Script-->
+    <script>
+    document.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    e.stopPropagation();
+    });
+
+    </script>
+        <!--Script for screen size fix-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var windowWidth = $(window).width();
+            var maxDeviceWidth = 768; // Set your desired threshold (e.g., 768 pixels for tablets)
+            
+            if (windowWidth > maxDeviceWidth) {
+            $('#desktop-container').show(); $('#mobile-container').hide();
+            } else {
+            $('#mobile-container').show(); $('#desktop-container').hide();
+            }
+        });
+    </script>
+    <style>
+
+        html, body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+        height:100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        cursor: default; color: black; text-decoration:none;
+        font-size: calc(5pt + .5vw)
+        }
+        .Mobile{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+        height:100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        cursor: default; color: black; text-decoration:none;
+        font-size: calc(5pt + 2vw)
+        }
+        .header{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+        height:100%;
+        background-color: rgb(27, 94, 32);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        cursor: default; color: black; text-decoration:none;
+        font-size: calc(5pt + 2vw)
+        }
+        .footer{
+        width: 100%;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        color: white;
+        text-align: center;
+        }
+    </style>
 </head>
 <body>
     Experience Page Coming Soon
