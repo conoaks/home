@@ -8,5 +8,5 @@ find an evolving collection of projects,
 code snippets, resources that reflect 
 my growth as a developer.
 
-This will also server as a somewhat up to date backend of my website
+This will also server as a somewhat up to date backup of the backend to my website
 https://resume.conoaks.com, along with being my backup of it
