@@ -55,6 +55,8 @@ html, body {
   color: white;
 }
 .logo{
+  width: 3vw;
+  height: 3vw;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
