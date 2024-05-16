@@ -1,0 +1,44 @@
+      html, body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+        height:100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        cursor: default; color: black; text-decoration:none;
+        font-size: calc(5pt + .5vw)
+      }
+      .Mobile{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+        height:100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        cursor: default; color: black; text-decoration:none;
+        font-size: calc(5pt + 2vw)
+      }
+      .header{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+        height:100%;
+        background-color: rgb(27, 94, 32);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        cursor: default; color: black; text-decoration:none;
+        font-size: calc(5pt + 2vw)
+      }
+      .footer{
+        width: 100%;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        color: white;
+        text-align: center;
+      }
