@@ -1,38 +1,98 @@
-html, body {
+html,
+body {
   display: flex;
   flex-direction: column;
   flex: 1;
   width: 100%;
-  height:100%;
+  height: 100%;
+  font-family:system-ui, Ubuntu, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: default; color: black; text-decoration:none;
-  font-size: calc(5pt + .5vw)
+  cursor: default;
+  color: black;
+  text-decoration: none;
+  font-size: calc(5pt + 0.5vw);
 }
-.Mobile{
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  width: 100%;
+  height:auto;
+  border-radius: 5%;
+}
+header {
+  font-size: calc(10pt + 1vw);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1vw 1vw;
+  cursor: default;
+  color: black;
+}
+.intro {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 6vw;
+  padding: 1vw 1vw;
+  cursor: default;
+  color: black;
+  font-size: 4vw;
+  font-weight: bold;
+}
+.intro-text {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  width: 100%;
-  height:100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  cursor: default; color: black; text-decoration:none;
-  font-size: calc(5pt + 2vw)
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+  padding: 1vw 1vw;
+  cursor: default;
+  color: black;
 }
-.header{
+.intro-buttons{
   display: flex;
-  flex-direction: column;
-  flex: 1;
-  width: 100%;
-  height:100%;
-  background-color: rgb(27, 94, 32);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  cursor: default; color: black; text-decoration:none;
-  font-size: calc(5pt + 2vw)
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+  padding: 1vw 1vw;
+  cursor: default;
+  color: black;
 }
-.footer{
+.top-bar {
+  font-size: calc(10pt + .5vw);
+  font-family:system-ui, Ubuntu, sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 1vw;
+  gap: .75vw;
+  height: 100%;
+  width: 100%;
+  cursor: default;
+  color: rgb(122, 122, 122);
+}
+.selected {
+  color: black;
+  font-weight: bold;
+}
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1vw 1vw;
+  width: 3vw;
+  min-width:50px;
+  height: auto;
+}
+.footer {
   width: 100%;
   position: fixed;
   left: 0;
@@ -42,27 +102,33 @@ html, body {
   color: white;
   text-align: center;
 }
-.top-bar{
-  font: 1.5em 'Helvetica', sans-serif;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 20px;
-  gap: 1vw;
-  height: 60px;
-  cursor: default; color: black; text-decoration:none;
-  color: white;
-}
-.logo{
+.picture {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  padding: 0 20px;
-  gap: 1vw;
-  height: 60px;
-  cursor: default; color: black; text-decoration:none;
+  cursor: default;
+  color: black;
+  text-decoration: none;
   color: white;
-  size-adjust: 3vw;
+  width: 28vw;
+  height: auto;
 }
+.email-button{
+  padding: .2vw 2vw;
+  cursor: pointer;
+  color: white;
+  background-color: #1777e5;
+  border-radius: .3vw;
+  font-size: calc(5pt + 0.5vw);
+  font-family: inherit;
+}
+.portfolio-button{
+  padding: .2vw 2vw;
+  cursor: pointer;
+  background-color: #f5f6f7;
+  border-radius: .3vw;
+  font-size: calc(5pt + 0.5vw);
+  font-family: inherit;
+}
+
