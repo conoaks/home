@@ -43,6 +43,7 @@ html, body {
   text-align: center;
 }
 .top-bar{
+  font: 1.5em 'Helvetica', sans-serif;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
