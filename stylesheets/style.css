@@ -42,10 +42,10 @@ html, body {
   color: white;
   text-align: center;
 }
-.header nav{
+.top-bar{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   padding: 0 20px;
   height: 60px;
