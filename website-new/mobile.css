@@ -337,5 +337,55 @@ header {
   border-radius: .5vw;
 }
 .tools-box p{
-  font-size: calc(5pt + 0.3vw);
+  font-size: calc(3pt + .5vw);
+}
+.certifications{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: left;
+  align-items: left;
+  vertical-align: top;
+  padding-top: 5%;
+  cursor: default;
+  color: black;
+  height: auto;
+}
+.certification-title{
+  width: 100%;
+}
+.certs-row{
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  align-self: flex-start;
+  vertical-align: top;
+  padding-top: 5%;
+  cursor: default;
+  color: black;
+  height: auto;
+}
+.certs-row super{
+  font-size: calc(5pt + 0.25vw);
+  color: #1777e5;
+  gap: 1vw;
+}
+.certs-row p{
+  font-size: calc(10pt + 0.5vw);
+}
+.certs-row text{
+  flex-direction: column;
+}
+.certs-col{
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  vertical-align: top;
+  gap: 1vw;
+  padding-left: 5%;
+  cursor: default;
+  color: black;
+  height: auto;
 }
