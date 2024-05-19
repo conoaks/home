@@ -17,15 +17,6 @@ body {
   text-decoration: none;
   font-size: calc(5pt + 0.5vw);
 }
-a {
-  color: inherit;
-  text-decoration: none;
-}
-img {
-  width: 100%;
-  height: auto;
-  border-radius: 5%;
-}
 header {
   font-size: calc(10pt + 1vw);
   display: flex;
@@ -37,34 +28,6 @@ header {
   cursor: default;
   color: black;
   font-weight: normal;
-}
-.intro {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 6vw;
-  padding: 1vw 1vw;
-  cursor: default;
-  color: black;
-  font-size: 4vw;
-}
-.intro-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: default;
-  color: black;
-}
-.intro-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 2.5vw;
-  cursor: default;
-  color: black;
 }
 .top-bar {
   font-size: calc(10pt + 0.5vw);
@@ -93,6 +56,43 @@ header {
   width: 3vw;
   min-width: 50px;
   height: auto;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 5%;
+}
+.intro {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 6vw;
+  padding: 1vw 1vw;
+  cursor: default;
+  color: black;
+  font-size: 4vw;
+}
+.intro-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+  color: black;
+}
+.intro-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5vw;
+  cursor: default;
+  color: black;
 }
 .footer {
   width: 100%;

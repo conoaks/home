@@ -17,6 +17,33 @@ body {
   text-decoration: none;
   font-size: calc(5pt + 0.5vw);
 }
+.top-bar {
+  font-size: calc(9pt + 0.5vw);
+  font-family: system-ui, Ubuntu, sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 1vw;
+  gap: 2vw;
+  height: 100%;
+  width: 100%;
+  cursor: default;
+  color: rgb(122, 122, 122);
+}
+.selected {
+  color: black;
+  font-weight: bold;
+}
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1vw 1vw;
+  width: 1vw;
+  height: auto;
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -79,34 +106,7 @@ header {
   width: 70vw;
   height: auto;
 }
-.top-bar {
-  font-size: calc(9pt + 0.5vw);
-  font-family: system-ui, Ubuntu, sans-serif;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 1vw;
-  gap: 0.75vw;
-  height: 100%;
-  width: 100%;
-  cursor: default;
-  color: rgb(122, 122, 122);
-}
-.selected {
-  color: black;
-  font-weight: bold;
-}
-.logo {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 1vw 1vw;
-  width: 3vw;
-  min-width: 50px;
-  height: auto;
-}
+
 .footer {
   width: 100%;
   height: auto;
@@ -249,12 +249,11 @@ header {
   display: flex;
   flex-direction:   column;
   vertical-align: top;
-  width: 80%;
+  width:100%;
 }
 .education-text{
   flex-direction: column;
-  padding-left: 2%;
-  width: 80%;
+  width: 100%;
 }
 .work{
   align-self: center;
@@ -266,8 +265,7 @@ header {
 }
 .work-text{
   flex-direction: column;
-  padding-left: 2%;
-  width: 80%;
+  width: 95%;
 }
 .education super{
   font-size: calc(5pt + 0.25vw);
@@ -294,8 +292,8 @@ header {
 .tools{
   display: flex;
   flex-direction: row;
-  width: 100%;
-  justify-content: center;
+  width: 80%;
+  justify-content: left;
   align-items: center;
   vertical-align: top;
   padding-top: 5%;
