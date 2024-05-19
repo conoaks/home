@@ -76,11 +76,11 @@ header {
   color: black;
   text-decoration: none;
   color: white;
-  width: 40vw;
+  width: 70vw;
   height: auto;
 }
 .top-bar {
-  font-size: calc(10pt + 0.5vw);
+  font-size: calc(9pt + 0.5vw);
   font-family: system-ui, Ubuntu, sans-serif;
   display: flex;
   flex-direction: row;
