@@ -7,7 +7,7 @@ body {
   flex: 1;
   width: 100%;
   height: auto;
-  padding-bottom: 20%;
+  padding-bottom: 10%;
   font-family: system-ui, Ubuntu, sans-serif;
   font-weight: bold;
   -webkit-font-smoothing: antialiased;
@@ -40,7 +40,7 @@ header {
 }
 .intro {
   display: flex;
-  flex-direction: row;
+  flex-direction:  column;
   justify-content: center;
   align-items: center;
   gap: 6vw;
@@ -56,6 +56,7 @@ header {
   align-items: center;
   cursor: default;
   color: black;
+  width:100%
 }
 .intro-buttons {
   display: flex;
@@ -65,6 +66,18 @@ header {
   gap: 2.5vw;
   cursor: default;
   color: black;
+}
+.picture {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: default;
+  color: black;
+  text-decoration: none;
+  color: white;
+  width: 40vw;
+  height: auto;
 }
 .top-bar {
   font-size: calc(10pt + 0.5vw);
@@ -105,18 +118,7 @@ header {
   text-align: center;
   font-weight: normal;
 }
-.picture {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  cursor: default;
-  color: black;
-  text-decoration: none;
-  color: white;
-  width: 28vw;
-  height: auto;
-}
+
 .blue-button {
   padding: 0.2vw 2vw;
   cursor: pointer;
@@ -146,7 +148,7 @@ header {
   display: flex;
   position: relative;
   align-self: center;
-  flex-direction: row;
+  flex-direction:  column;
   justify-content: center;
   align-items: center;
   gap: 1vw;
@@ -167,14 +169,14 @@ header {
   cursor: default;
   color: black;
   font-weight: normal;
-  width: 40%;
+  width: 80%;
 }
 .blurb-text h1 {
   font-size: calc(10pt + 1vw);
   font-weight: bold;
 }
 .blurb-image {
-  width: 10vw;
+  width: 15vw;
   height: auto;
   border-radius: 5%;
 }
@@ -243,27 +245,29 @@ header {
 }
 .education{
   align-self: center;
-  align-items: left;
+  align-items: center;
   display: flex;
-  flex-direction:  wrap;
+  flex-direction:   column;
   vertical-align: top;
-  width: 49%;
+  width: 80%;
 }
-.education text{
+.education-text{
   flex-direction: column;
+  padding-left: 2%;
+  width: 80%;
 }
 .work{
   align-self: center;
   align-items: center;
   display: flex;
-  flex-direction:  row;
+  flex-direction:   column;
   vertical-align: top;
   width: 100%;
 }
 .work-text{
   flex-direction: column;
   padding-left: 2%;
-  width: 20%;
+  width: 80%;
 }
 .education super{
   font-size: calc(5pt + 0.25vw);
@@ -302,7 +306,7 @@ header {
 }
 .tool-images{
   display: flex;
-  flex-direction: wrap;
+  flex-direction:  row;
   justify-content: center;
   align-items: center;
   vertical-align: top;
