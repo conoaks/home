@@ -14,44 +14,26 @@
         <a href="/index.html"><img src="/images/co-black.png" alt="Conner Oaks Logo"></a>
     </div>
     <div class="top-bar">
-        <div class="selected"><a href="/index.html">Home</a></div>
-        <a href="/experience.html">Experience</a>
+        <a href="/index.html">Home</a>
+        <div class="selected"><a href="/experience.html">Experience</a></div>
         <a href="/portfolio.html">Portfolio</a>
         <a href="https://conoaks.com">Contact</a>
     </div>
 </header>
 
 <body>
-    <div id=introduction class="intro">
-        <div class="picture"> <img src="/images/headshot.png" alt="Conner Oaks Headshot"></div>
-        <div class="intro-text">
-            <p>Hello, I'm <br> Conner Oaks.</p>
-            <div class="intro-buttons">
-                <a href="mailto:conoaks@gmail.com" class="blue-button">Say Hello</a>
-                <a href="/portfolio.html" class="grey-button">View Portfolio</a>
-            </div>
+    <div id=introduction class="blurb-box">
+        <div id="heading" class="blurb-text">
+            <h1>A Jack of all Trades</h1>
         </div>
-    </div>
-    </div>
-
-    <div class="spacer"></div>
-
-    <div id="blurb" class="blurb-box">
-            <div class="blurb-image">
-                <img src="/images/circle-pic.png" alt="Conner in front of a tree">
-            </div>
-            <div class="blurb-text">
-                <h1>A Jack of all Trades</h1>
-                <p>I’m an Information Technology major at FSU who has become a Jack of all Trades.
-                    My “toolbox” includes networking, coding, basic manufacturing, photo editing, 3D printing, and CAD
-                    modeling, and it is ever expanding as I continue to tinker and learn more.
-                </p>
-            </div>
-            <div class="intro-buttons">
+        <div id="text" class="blurb-text">
+        <p>I’m an Information Technology major at FSU who has become a Jack of all Trades.
+             My “toolbox” includes networking, coding, basic manufacturing, photo editing, 3D printing, and CAD modeling, 
+             and it is ever expanding as I continue to tinker and learn more.</p>
+            <div class="intro-buttons" style="align-self: flex-start;">
                 <a href="/Resume/resume-updated.pdf" class="grey-button">Download Resume</a>
             </div>
-        <div class="spacer"></div>
-        <br>
+        </div>
     </div>
     <div class="skills-box">
         <div id="Education">
@@ -108,7 +90,6 @@
             </div>
         </div>
     </div>
-
     <div id="tools-used" class="tools">
         <h1><div class="text-with-green-line" style="color: #2db24a">Tools I Use</h1></div>
             <div class=""spacer> <br> </div>
@@ -149,7 +130,6 @@
                 <p>VS Code</p>
             </div>
         </div>
-    </div>
     </div>
     <div class="spacer"></div>
     <div id="certifications" class="certifications">
@@ -208,8 +188,40 @@
                 </text>
             </div>
         </div>
-
     </div>
+    <div class="spacer"></div>
+    <div id="personal-projects" class="personal-projects">
+        <h1>Personal Projects</h1>
+        <box>
+            <individual>
+                <div id="website">
+                    <text>
+                    <img src="/images/website.png">
+                    <p>Personal Website</p>
+                    <sub>The website you’re on right now! It was originally fully self hosted using NGINX with access to the wider web provided through Cloudflare Zero Access Tunnels rather than port forwarding as it provides both a greater level of security and more granular control over what domains are and aren’t accessible. Now I have shifted to have it cloud hosted using Azure Static Web Apps, keeping all of the security beinfits of my original setup but removing most of the downtime I was facing with the self hosted option. </sub>
+                    </text>
+                </div>
+            </individual>
+            <individual>
+                <div id="photography">
+                    <text>
+                    <img src="/images/photography.jpg">
+                    <p>Photography</p>
+                    <sub> I dabble with photography and videography, nothing I do professionally but as a hobby and a way to document my trips. </sub>
+                    </text>
+                </div>
+            </individual>
+            <individual>
+                <div id="portainer">
+                    <text>
+                    <img src="/images/portainer-screenshot.png">
+                    <p>Docker Container Management</p>
+                    <sub> I have self-hosted numerous things using Docker, including the NGINX instance I use to run this website, and the Code-Server I use to edit the back-end of this website. </sub>
+                    </text>
+                </div>
+        </box>
+    </div>
+
 </body>
 
 <footer>
@@ -218,4 +230,3 @@
             <p>Conner Oaks © 2024</p>
         </div>
 </footer>
-<html>

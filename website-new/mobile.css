@@ -235,59 +235,72 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-self: center;
-  vertical-align: top;
+  align-items: flex-start;
   padding-top: 5%;
   cursor: default;
   color: black;
   width:80%;
   height: auto;
 }
+
 .education{
-  align-self: center;
-  align-items: center;
   display: flex;
-  flex-direction:   column;
-  vertical-align: top;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   width:100%;
 }
+
 .education-text{
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   width: 100%;
   padding-top: 2%;
 }
+
 .work{
-  align-self: center;
-  align-items: center;
   display: flex;
-  flex-direction:   column;
-  vertical-align: top;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   width: 100%;
 }
+
 .work-text{
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   width: 95%;
   padding-top: 2%;
 }
+
 .education super{
   font-size: calc(5pt + 0.25vw);
   color: #1777e5;
 }
+
 .work super{
   font-size: calc(5pt + 0.25vw);
   color: #ff5f49;
 }
+
 .education sub{
   font-size: calc(5pt + 0.25vw);
   color: #666a71;
 }
+
 .work sub{
   font-size: calc(5pt + 0.25vw);
   color: #666a71;
 }
+
 .education p{
   font-size: calc(10pt + 0.5vw);
 }
+
 .work p{
   font-size: calc(10pt + 0.5vw);
 }
@@ -384,4 +397,52 @@ header {
   cursor: default;
   color: black;
   height: auto;
+}
+.personal-projects{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  vertical-align: top;
+  padding-top: 5%;
+  cursor: default;
+  color: black;
+  height: auto;
+}
+.personal-projects box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 80%;
+  cursor: default;
+  color: black;
+  height: auto;
+  gap: 2vw;
+}
+
+.personal-projects individual{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  cursor: default;
+  color: black;
+  height: auto;
+}
+.personal-projects sub{
+  font-size: calc(7pt + 0.25vw);
+  color: #666a71;
+}
+.personal-projects img{
+  width: 100%;
+  height:auto;
+  object-fit:contain;
+  border-radius: 5%;
+  outline: black;
+  outline-width: 1px;
+  outline-style: solid;
 }
