@@ -276,6 +276,13 @@ header {
   width: 95%;
   padding-top: 2%;
 }
+.work ul{
+  display: flex;
+  align-items: flex-start;
+  list-style-type:circle;
+  padding-left: 0;
+
+}
 
 .education super{
   font-size: calc(5pt + 0.25vw);
@@ -462,7 +469,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center; /* This will center the items horizontally */
-  align-items: flex-start; /* This will align the items to the top */
+  align-items: center; /* This will align the items to the top */
   width: 100%;
   cursor: default;
   color: black;
@@ -475,7 +482,7 @@ header {
 }
 .portfolio img{
   width: 100%;
-  height: 26vw;
+  height: 50vw;
   object-fit: cover;
   border-radius: 5%;
   outline: black;
@@ -490,11 +497,11 @@ header {
   flex-direction: row;
   justify-content: center; /* This will center the items horizontally */
   align-items: flex-start; /* This will align the items to the top */
-  width: 50%;
+  width: 100%;
   cursor: default;
   color: black;
   height: auto;
-  gap: 2%;
+  gap: 5%;
 }
 .portfolio sub{
   font-size: calc(8pt + 0.25vw);
