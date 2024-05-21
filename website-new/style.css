@@ -20,7 +20,7 @@ body {
 header {
   font-size: calc(10pt + 1vw);
   display: flex;
-  width: 80%;
+  width: 90%;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
@@ -37,7 +37,7 @@ header {
   justify-content: flex-end;
   align-items: center;
   padding: 0 1vw;
-  gap: 0.75vw;
+  gap: 1vw;
   height: 100%;
   width: 100%;
   cursor: default;
@@ -105,6 +105,7 @@ img {
   text-align: center;
   font-weight: normal;
 }
+
 .picture {
   display: flex;
   flex-direction: row;
@@ -116,6 +117,7 @@ img {
   color: white;
   width: 28vw;
   height: auto;
+  
 }
 .blue-button {
   padding: 0.2vw 2vw;
@@ -153,11 +155,11 @@ img {
   padding: 1vw 1vw;
   cursor: default;
   color: black;
-  box-shadow: 0vw 0vw 0.5vw 0.1vw rgba(0, 0, 0, 0.1);
   width: 70%;
   height: auto;
   border-radius: 1vw;
-  background-color: rgb(255, 255, 255); /* change this */
+  background: #ffffff;
+  box-shadow:  5px 5px 10px #666666, -5px -5px 10px #ffffff;
 }
 .blurb-text {
   display: flex;
@@ -334,6 +336,9 @@ img {
   width: 10vw;
   height: 10vw;
   border-radius: .5vw;
+  border-radius: 1vw;
+  background: #ffffff;
+  box-shadow:  5px 5px 10px #666666, -5px -5px 10px #ffffff;
 }
 .tools-box p{
   font-size: calc(5pt + 0.3vw);
@@ -438,4 +443,70 @@ img {
   outline: black;
   outline-width: 1px;
   outline-style: solid;
+}
+.portfolio{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  vertical-align: top;
+  padding-top: 5%;
+  cursor: default;
+  color: black;
+  height: auto;
+}
+.portfolio box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* This will center the items horizontally */
+  align-items: flex-start; /* This will align the items to the top */
+  width: 100%;
+  cursor: default;
+  color: black;
+  height: auto;
+  gap: 2%;
+}
+.portfolio h1{
+  font-size: calc(10pt + 2vw);
+  font-weight: bold;
+}
+.portfolio img{
+  width: 100%;
+  height: 26vw;
+  object-fit: cover;
+  border-radius: 5%;
+  outline: black;
+  outline-width: 1px;
+  outline-style: solid;
+}
+.portfolio p{
+  font-size: calc(10pt + 0.5vw);
+  color: #666a71;
+}.portfolio item{
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* This will center the items horizontally */
+  align-items: flex-start; /* This will align the items to the top */
+  width: 50%;
+  cursor: default;
+  color: black;
+  height: auto;
+  gap: 2%;
+}
+.portfolio sub{
+  font-size: calc(8pt + 0.25vw);
+  color: #666a71;
+  font-weight: normal;
+}
+.portfolio row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* This will center the items horizontally */
+  align-items: flex-start; /* This will align the items to the top */
+  width: 100%;
+  cursor: default;
+  color: black;
+  height: auto;
+  gap: 2%;
 }
