@@ -446,3 +446,69 @@ header {
   outline-width: 1px;
   outline-style: solid;
 }
+.portfolio{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  vertical-align: top;
+  padding-top: 5%;
+  cursor: default;
+  color: black;
+  height: auto;
+}
+.portfolio box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* This will center the items horizontally */
+  align-items: flex-start; /* This will align the items to the top */
+  width: 100%;
+  cursor: default;
+  color: black;
+  height: auto;
+  gap: 2%;
+}
+.portfolio h1{
+  font-size: calc(10pt + 2vw);
+  font-weight: bold;
+}
+.portfolio img{
+  width: 100%;
+  height: 26vw;
+  object-fit: cover;
+  border-radius: 5%;
+  outline: black;
+  outline-width: 1px;
+  outline-style: solid;
+}
+.portfolio p{
+  font-size: calc(10pt + 0.5vw);
+  color: #666a71;
+}.portfolio item{
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* This will center the items horizontally */
+  align-items: flex-start; /* This will align the items to the top */
+  width: 50%;
+  cursor: default;
+  color: black;
+  height: auto;
+  gap: 2%;
+}
+.portfolio sub{
+  font-size: calc(8pt + 0.25vw);
+  color: #666a71;
+  font-weight: normal;
+}
+.portfolio row{
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* This will center the items horizontally */
+  align-items: flex-start; /* This will align the items to the top */
+  width: 100%;
+  cursor: default;
+  color: black;
+  height: auto;
+  gap: 2%;
+}
