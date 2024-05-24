@@ -16,6 +16,7 @@ body {
   color: black;
   text-decoration: none;
   font-size: calc(5pt + 0.5vw);
+  background:  #FFFFF0;
 }
 header {
   font-size: calc(10pt + 1vw);
