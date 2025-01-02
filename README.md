@@ -9,4 +9,4 @@ code snippets, resources that reflect
 my growth as a developer.
 
 This will also server as an up to date  backend to my website
-https://resume.conoaks.com
+https://www.conoaks.com
