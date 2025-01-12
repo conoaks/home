@@ -1,0 +1,54 @@
+pat_id	pat_ssn	pat_fname	pat_lname	pat_street	pat_city	pat_state	pat_zip	pat_phone	pat_email	pat_dob	pat_gender	pat_notes
+1	123456789	Carla	Vanderbilt	5133 3rd Road	Lake Worth	FL	334908789	5678901234  	csweeney@yahoo.com	1961-11-26	F	NULL
+2	789123488	Amanda	Lindell	2241 W. Pensacola Street	Tallahassee	FL	777678543	6784929431  	amc10c@my.fsu.edu	1981-04-04	F	NULL
+3	987456321	David	Stephens	1293 Banana Code Drive	Panama City	FL	323091234	7705551234  	mjowett@comcast.net	1965-05-15	M	NULL
+4	365214986	Chris	Thrombough	987 Learning Drive	Tallahassee	FL	323011234	4408905678  	landbeck@fsu.edu	1969-08-09	M	NULL
+5	326598236	Spencer	Moore	787 Tharpe Road	Taliahassee	FL	323061234	7814929431  	spencer@my.fsu.edu	1990-08-14	M	NULL
+
+
+med_id	med_name	med_price	med_shelf_life	med_notes
+1	Abilify	200.00	2014-09-23	NULL
+2	Aciphex	125.00	2015-06-24	NULL
+3	Actonel	250.00	2016-06-25	NULL
+4	Actoplus MET	412.00	2017-06-26	NULL
+5	Actos	89.00	2018-06-27	NULL
+
+
+pre_id	pat_id	med_id	pre_date	pre_dosage	pre_num_refills	pre_notes
+1	1	1	2011-12-01	take one per day	1	NULL
+2	1	2	2004-12-31	take as needed	2	NULL
+3	2	3	1999-12-31	take two before and after dinner	1	NULL
+4	2	4	1999-07-31	take one per day	2	NULL
+5	3	5	2011-01-01	take as needed	1	NULL
+
+
+phy_id	phy_specialty	phy_fname	phy_lname	phy_street	phy_city	phy_state	phy_zip	phy_phone	phy_fax	phy_email	phy_url	phy_notes
+1	family medicine	tom	smith	987 peach st	tampa	FL	336101234	9876543210	7814909810	tsmith@gmail.com	tsmithfamilymed.com	NULL
+2	internal medicine	steve	williams	963 plum st	miami	FL	435311234	9657841234	4049329189	swilliams@gmail.com	swiliamsmedicine.com	NULL
+3	pediatrician	ronald	burns	645 wave circle	orlando	FL	332149089	7709871234	5674329087	rburns@gmail.com	rburnspediactrics.com	NULL
+4	psychiatrist	pete	roger	1233 stadium circle	orlando	FL	332147867	5674321234	9087651234	peteroger@gmail.com	progerpysch.com	NULL
+5	dermatology	dave	roger	645 hard drive	miami	FL	545129089	6785499012	7818920980	droger@gmail.com	drogerderma.com	NULL
+
+
+trt_id	trt_name	trt_price	trt_notes
+1	knee replacement	2000.00	NULL
+2	heart transplant	130000.00	NULL
+3	hip replacement	40000.00	NULL
+4	tonsils removed	5000.00	NULL
+5	skin graft	2000.00	NULL
+
+
+ptr_id	pat_id	phy_id	trt_id	ptr_date	ptr_start	ptr_end	ptr_results	ptr_notes
+1	1	1	1	2011-12-23	07:09:09.0000000	10:12:15.0000000	success patient is fine	NULL
+2	1	2	2	2011-12-24	08:08:09.0000000	11:12:13.0000000	complications patient will repeat procedure at a later time	NULL
+3	2	3	3	2011-12-25	09:08:09.0000000	12:12:15.0000000	died during surgery	NULL
+4	2	4	4	2011-12-26	10:09:10.0000000	13:12:15.0000000	success patient is fine	NULL
+5	2	5	5	2011-12-27	11:08:09.0000000	14:12:15.0000000	complications patient will repeat procedure at a later time	NULL
+
+
+pre_id	ptr_id
+1	1
+2	2
+3	3
+4	4
+5	5
