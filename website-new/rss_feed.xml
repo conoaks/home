@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Conner Oaks</title>
+    <link>https://www.conoaks.com</link>
+    <description>Welcome to Conner Oaks' feed, where you'll find updates, insights, and engaging content across various topics. Stay connected and informed with this dynamic and versatile source.</description>
+    <pubDate>Tue, 03 Apr 2025 13:29:00 EST</pubDate>
+
+    <item>
+      <title>Item 1 Title</title>
+      <link>https://www.example.com/item1</link>
+      <description>Brief description of Item 1</description>
+      <pubDate>Tue, 02 Apr 2025 12:00:00 EST</pubDate>
+    </item>
+
+    <item>
+      <title>Item 2 Title</title>
+      <link>https://www.example.com/item2</link>
+      <description>Brief description of Item 2</description>
+      <pubDate>Wed, 03 Apr 2025 10:30:00 EST</pubDate>
+    </item>
+  </channel>
+</rss>
