@@ -156,7 +156,7 @@ header {
   cursor: default;
   color: black;
   box-shadow: 0vw 0vw 0.5vw 0.1vw rgba(0, 0, 0, 0.1);
-  width: 70%;
+  width: 80%;
   height: auto;
   border-radius: 1vw;
   background: #ffffff;
@@ -240,7 +240,7 @@ header {
   padding-top: 5%;
   cursor: default;
   color: black;
-  width:68%;
+  width:80%;
   height: auto;
 }
 
