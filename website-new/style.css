@@ -272,7 +272,7 @@ img {
   width: 100%;
 }
 .work-text{
-  flex: 0 0 33.33%;
+  flex: 0 0 calc(33.33% - 20px);
   box-sizing:border-box;
   flex-direction: column;
   padding-left: 2%;
