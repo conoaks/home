@@ -270,7 +270,6 @@ img {
   flex-direction:  row;
   vertical-align: top;
   width: 100%;
-  gap: 10px;
 }
 .work-text{
   flex: 0 0 calc(33.33% - 20px);
@@ -278,6 +277,7 @@ img {
   flex-direction: column;
   padding-left: 2%;
   width: 20%;
+  margin-bottom: 20px;
 }
 .education super{
   font-size: calc(5pt + 0.25vw);
