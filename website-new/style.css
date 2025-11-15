@@ -270,10 +270,9 @@ img {
   flex-direction:  row;
   vertical-align: top;
   width: 100%;
-  padding: 10px;
 }
 .work-text{
-  flex: 0 0 33.333%;
+  flex: 0 0 calc(33.333%-20px);
   box-sizing:border-box;
   display: block;
   flex-direction: column;
