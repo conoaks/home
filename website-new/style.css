@@ -264,20 +264,29 @@ img {
 }
 .work{
   align-self: center;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 0;
+  row-gap: 20px;
+  width: 100%;
+  /*align-items: flex-start;
   flex-wrap: wrap;
   display: flex;
   flex-direction:  row;
   vertical-align: top;
-  width: 100%;
+  width: 100%;*/
 }
 .work-text{
-  flex: 0 0 calc(33.33% - 20px);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-right: 10px;
+  /*flex: 0 0 calc(33.33% - 20px);
   box-sizing:border-box;
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-  padding: 0;
+  padding: 0;*/
 }
 .education super{
   font-size: calc(5pt + 0.25vw);
