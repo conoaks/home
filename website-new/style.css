@@ -269,9 +269,7 @@ img {
   display: flex;
   flex-direction:  row;
   vertical-align: top;
-  width: 100%;
-  padding-left: 10px;
-  padding-right: 10px;
+  width: 80%;
 }
 .work-text{
   flex: 0 0 33.333%;
