@@ -265,12 +265,15 @@ img {
 .work{
   align-self: center;
   align-items: flex-start;
+  flex-wrap: wrap;
   display: flex;
   flex-direction:  row;
   vertical-align: top;
   width: 100%;
 }
 .work-text{
+  flex: 0 0 33.33%;
+  box-sizing:border-box;
   flex-direction: column;
   padding-left: 2%;
   width: 20%;
