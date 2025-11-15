@@ -277,7 +277,6 @@ img {
   flex-direction: column;
   padding-left: 2%;
   width: 20%;
-  margin-bottom: 20px;
 }
 .education super{
   font-size: calc(5pt + 0.25vw);
