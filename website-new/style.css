@@ -260,7 +260,8 @@ img {
 }
 .education-text{
   flex-direction: column;
-  padding-left: 6%;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 .work{
   align-self: center;
@@ -270,7 +271,8 @@ img {
   flex-direction:  row;
   vertical-align: top;
   width: 100%;
-  padding-left: 6%;
+  padding-left: 3%;
+  padding-right: 3%
 }
 .work-text{
   flex: 0 0 33.333%;
