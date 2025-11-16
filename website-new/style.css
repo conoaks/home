@@ -270,7 +270,7 @@ img {
   display: flex;
   flex-direction:  row;
   vertical-align: top;
-  width: 80%;
+  width: 90%;
 }
 .work-text{
   flex: 0 0 33.333%;
